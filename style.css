@@ -4246,7 +4246,7 @@
         position: relative;
         align-self: stretch;
         width: 100%;
-        height: 803px;
+        height: 1020px;
     }
 
     .jampa-web .layer {
@@ -4285,8 +4285,8 @@
 
     .jampa-web .frame-6 {
         position: absolute;
-        top: 0;
-        left: 1000px;
+        top: 20px;
+        left: 870px;
         width: 658px;
         height: 325px;
     }
@@ -4371,7 +4371,8 @@
         top: 1px;
         left: 0;
         height: 323px;
-        aspect-ratio: 0.87;
+        object-fit: cover;
+        object-position: top center;
     }
 
     .jampa-web .title-wrapper {
@@ -4390,8 +4391,8 @@
 
     .jampa-web .frame-9 {
         position: absolute;
-        top: 429px;
-        left: 792px;
+        top: 630px;
+        left: 430px;
         width: 658px;
         height: 325px;
     }
@@ -4426,13 +4427,14 @@
         left: 0;
         width: 282px;
         height: 325px;
-        aspect-ratio: 0.87;
+        object-fit: cover;
+        object-position: top center;
     }
 
     .jampa-web .frame-11 {
         position: absolute;
-        top: 92px;
-        left: 257px;
+        top: 330px;
+        left: 20px;
         width: 658px;
         height: 325px;
     }
