@@ -1408,6 +1408,24 @@
 
 
 <script>
+    /* ── Smart #contact scroll fix ──
+       Two shells exist in DOM (desktop + mobile). The browser always scrolls
+       to the first #contact element (desktop), even when it's hidden.
+       We intercept all #contact links and scroll to the visible one instead. */
+    document.addEventListener("click", function (e) {
+        const link = e.target.closest('a[href="#contact"]');
+        if (!link) return;
+        e.preventDefault();
+
+        const isMobile = window.innerWidth <= 991;
+        const shell   = document.querySelector(isMobile ? ".mobile-shell" : ".desktop-shell");
+        const target  = shell ? shell.querySelector("#contact") : document.getElementById("contact");
+
+        if (target) {
+            target.scrollIntoView({ behavior: "smooth", block: "start" });
+        }
+    });
+
     document.addEventListener("DOMContentLoaded", function () {
 
         window.addEventListener("resize", calculateNewScale);

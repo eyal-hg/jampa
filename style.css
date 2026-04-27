@@ -6080,6 +6080,7 @@
 .pricing-btn--filled {
     background: #fff;
     color: var(--purple-01);
+    margin-bottom: 8px;
 }
 
 .pricing-btn--outline {
@@ -6098,7 +6099,7 @@
 
 /* Mobile pricing */
 .pricing-section--mobile {
-    padding: 60px 0 40px;
+    padding: 60px 0 80px;
 }
 
 .pricing-cards--mobile {
@@ -6109,6 +6110,11 @@
 .pricing-cards--mobile .pricing-card {
     max-width: 100%;
     width: 100%;
+}
+
+.pricing-section--mobile .pricing-btn {
+    margin-top: 8px;
+    margin-bottom: 40px;
 }
 /* ===== TESTIMONIAL CARDS (desktop) ===== */
 @media (min-width: 992px) {
