@@ -5242,6 +5242,19 @@
         left: 793px;
     }
 
+    .jampa-web .text-field-3 {
+        display: flex;
+        flex-direction: column;
+        width: 235px;
+        height: 40px;
+        align-items: flex-end;
+        justify-content: flex-end;
+        gap: 5px;
+        position: absolute;
+        top: 212px;
+        left: 525px;
+    }
+
     .jampa-web .rectangle-3 {
         position: absolute;
         left: 0;
@@ -5692,23 +5705,32 @@
     }
 
     .jampa-web .text-field input,
-    .jampa-web .text-field-2 input {
+    .jampa-web .text-field-2 input,
+    .jampa-web .text-field-3 input {
         width: 100%;
         border: none;
         background: transparent;
-        font-family: inherit;
-        font-size: inherit;
-        color: inherit;
+        font-family: "Rubik", Helvetica;
+        font-weight: 400;
+        font-size: 18px;
+        letter-spacing: -0.36px;
+        line-height: 24px;
+        color: #66666680;
         outline: none;
+        direction: rtl;
+        -webkit-appearance: none;
+        appearance: none;
     }
 
     .jampa-web .text-field input::placeholder,
-    .jampa-web .text-field-2 input::placeholder {
+    .jampa-web .text-field-2 input::placeholder,
+    .jampa-web .text-field-3 input::placeholder {
         color: #66666680;
     }
 
     .jampa-web .text-field input:focus,
-    .jampa-web .text-field-2 input:focus {
+    .jampa-web .text-field-2 input:focus,
+    .jampa-web .text-field-3 input:focus {
         outline: none;
     }
 
