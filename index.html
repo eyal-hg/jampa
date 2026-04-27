@@ -785,9 +785,7 @@
                             אליהן לב. ככה
                             שכל מטופל מקבל תשומת לב מלאה, גם כשהקליניקה עמוסה.
                         </p>
-                        <a href="#contact" class="div-wrapper" aria-label="קרא עוד על ניהול מטופלים חכם">
-                            <span class="title-14">קרא עוד</span>
-                        </a>
+                        <button class="read-more-btn">קרא עוד</button>
                     </div>
                 </article>
                 <article class="card">
@@ -798,9 +796,7 @@
                             המערכת שולחת הודעות בתזמון ובסגנון הנכונים - מחזקת את המוטיבציה של המטופל ומזמינה אותו לקבוע
                             את הפגישה הבאה. התוצאה? מטופלים שמגיעים ברצון ולא כי &#34;צריך&#34;. אתם מוכרים בלי למכור.
                         </p>
-                        <a href="#contact" class="div-wrapper" aria-label="קרא עוד על תיאום פגישות בלי מאמץ">
-                            <span class="title-14">קרא עוד</span>
-                        </a>
+                        <button class="read-more-btn">קרא עוד</button>
                     </div>
                 </article>
                 <article class="card">
@@ -820,9 +816,7 @@
                             מתמדת משבוע
                             לשבוע.
                         </p>
-                        <a href="#contact" class="div-wrapper" aria-label="קרא עוד על סופרוויזיון אישי">
-                            <span class="title-14">קרא עוד</span>
-                        </a>
+                        <button class="read-more-btn">קרא עוד</button>
                     </div>
                 </article>
                 <article class="card">
@@ -838,9 +832,7 @@
                             הערך שקיבל
                             בפגישה, ולצפות להמשך. הכל אוטומטי ומהיר, לכם רק נשאר לאשר בקליק והסיכום נשלח בוואטסאפ.
                         </p>
-                        <a href="#contact" class="div-wrapper" aria-label="קרא עוד על תיעוד פגישות אוטומטי">
-                            <span class="title-14">קרא עוד</span>
-                        </a>
+                        <button class="read-more-btn">קרא עוד</button>
                     </div>
                 </article>
                 <article class="card">
@@ -853,9 +845,7 @@
                             להתבוננות יומית. והכי חשוב? <strong>אתם שולטים במינון.</strong> הגדירו מראש את תדירות ואופי הפניות, והמערכת
                             תדאג לשמור את המטופל בתנועה, כך שיגיע לפגישה הבאה מוכן. כל ההודעות יזומות מצד המערכת, במינון שאתם מגדירים.
                         </p>
-                        <a href="#contact" class="div-wrapper" aria-label="קרא עוד על מעקב משימות יזום">
-                            <span class="title-14">קרא עוד</span>
-                        </a>
+                        <button class="read-more-btn">קרא עוד</button>
                     </div>
                 </article>
                 <article class="card">
@@ -868,9 +858,7 @@
                             סטטוס משימות, והמלצות במה להתמקד בפגישה ואיך לפתוח. זה כמו עוזר אישי שמכין לכם תדריך ממוקד,
                             שמאפשר לכם להתחיל כל פגישה מנקודת שיא וחיבור ורצף טיפולי.
                         </p>
-                        <a href="#contact" class="div-wrapper" aria-label="קרא עוד על הכנה לפגישה">
-                            <span class="title-14">קרא עוד</span>
-                        </a>
+                        <button class="read-more-btn">קרא עוד</button>
                     </div>
                 </article>
                 <article class="card">
@@ -885,9 +873,7 @@
                             פגישה הופכת להזדמנות צמיחה מקצועית ולמידה של שיטות מתקדמות וחדשות בצורה טבעית, רלוונטית,
                             ומיידית.
                         </p>
-                        <a href="#contact" class="div-wrapper" aria-label="קרא עוד על למידה אינסופית">
-                            <span class="title-14">קרא עוד</span>
-                        </a>
+                        <button class="read-more-btn">קרא עוד</button>
                     </div>
                 </article>
                 <article class="card">
@@ -899,9 +885,7 @@
                             אותם לפגישה הבאה - הכל בטון ובגישה הטיפולית שלכם, והכל יזום מצד המערכת. המטופל יודע שהקשר
                             הטיפולי הוא איתכם, אבל הרצף לא נשבר בין פגישה לפגישה.
                         </p>
-                        <a href="#contact" class="div-wrapper" aria-label="קרא עוד על תמיכה 24/7 למטופלים">
-                            <span class="title-14">קרא עוד</span>
-                        </a>
+                        <button class="read-more-btn">קרא עוד</button>
                     </div>
                 </article>
             </div>
@@ -1408,6 +1392,16 @@
 
 
 <script>
+    /* ── Read-more expand/collapse for mobile cards ── */
+    document.addEventListener("click", function (e) {
+        const btn = e.target.closest(".read-more-btn");
+        if (!btn) return;
+        const text = btn.previousElementSibling;
+        if (!text || !text.classList.contains("title-13")) return;
+        const isExpanded = text.classList.toggle("expanded");
+        btn.textContent = isExpanded ? "קרא פחות" : "קרא עוד";
+    });
+
     /* ── Smart #contact scroll fix ──
        Two shells exist in DOM (desktop + mobile). The browser always scrolls
        to the first #contact element (desktop), even when it's hidden.
