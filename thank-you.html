@@ -1,0 +1,112 @@
+<!doctype html>
+<html dir="rtl" lang="he">
+<head>
+    <meta charset="utf-8"/>
+    <meta content="width=device-width, initial-scale=1" name="viewport"/>
+    <title>תודה! | JAMPA</title>
+    <link rel="icon" type="image/svg+xml" href="img/favicon.svg"/>
+    <link href="https://fonts.googleapis.com/css2?family=Rubik:wght@300;400;500;600;700&display=swap" rel="stylesheet"/>
+    <style>
+        *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+        body {
+            font-family: 'Rubik', Helvetica, sans-serif;
+            background: #f5f5ff;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 24px;
+        }
+
+        .card {
+            background: #fff;
+            border-radius: 24px;
+            padding: 56px 48px;
+            max-width: 520px;
+            width: 100%;
+            text-align: center;
+            box-shadow: 0 8px 40px rgba(117, 87, 227, 0.12);
+            animation: fadeUp 0.6s ease both;
+        }
+
+        @keyframes fadeUp {
+            from { opacity: 0; transform: translateY(24px); }
+            to   { opacity: 1; transform: translateY(0); }
+        }
+
+        .icon {
+            width: 72px;
+            height: 72px;
+            background: linear-gradient(135deg, #7557E3, #9b7ff7);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 28px;
+        }
+
+        .icon svg { width: 36px; height: 36px; }
+
+        h1 {
+            font-size: 32px;
+            font-weight: 700;
+            color: #1a1a2e;
+            margin-bottom: 14px;
+            letter-spacing: -0.5px;
+        }
+
+        p {
+            font-size: 17px;
+            line-height: 1.7;
+            color: #696971;
+            margin-bottom: 36px;
+        }
+
+        .btn {
+            display: inline-block;
+            background: #7557E3;
+            color: #fff;
+            font-family: 'Rubik', Helvetica, sans-serif;
+            font-size: 17px;
+            font-weight: 500;
+            padding: 14px 36px;
+            border-radius: 37px;
+            text-decoration: none;
+            transition: background 0.2s, transform 0.15s;
+        }
+
+        .btn:hover { background: #6b4fd6; transform: translateY(-2px); }
+
+        .logo {
+            margin-top: 40px;
+            font-size: 22px;
+            font-weight: 700;
+            color: #7557E3;
+            letter-spacing: 1px;
+        }
+
+        @media (max-width: 480px) {
+            .card { padding: 40px 24px; }
+            h1 { font-size: 26px; }
+        }
+    </style>
+</head>
+<body>
+    <div class="card">
+        <div class="icon">
+            <svg viewBox="0 0 36 36" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M7 18L14 25L29 10" stroke="white" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+        </div>
+
+        <h1>קיבלנו את הפרטים שלך!</h1>
+        <p>תודה שפנית אלינו.<br/>נציג מ-JAMPA יחזור אליך בהקדם לשיחת התאמה ללא תשלום.</p>
+
+        <a href="https://jampa.ai/" class="btn">חזרה לאתר</a>
+
+        <div class="logo">JAMPA</div>
+    </div>
+</body>
+</html>
