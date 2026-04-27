@@ -4246,7 +4246,7 @@
         position: relative;
         align-self: stretch;
         width: 100%;
-        height: 1020px;
+        height: 803px;
     }
 
     .jampa-web .layer {
@@ -5726,6 +5726,105 @@
         border-width: 0;
     }
 
+    /* ══════════════════════════════════════════════
+       TESTIMONIALS REDESIGN — clean horizontal cards
+       ══════════════════════════════════════════════ */
+
+    /* Container */
+    .jampa-web .frame-5 {
+        height: 803px;
+    }
+
+    /* Cards: flex-row, overflow clipped */
+    .jampa-web .frame-5 > .frame-6,
+    .jampa-web .frame-5 > .frame-9,
+    .jampa-web .frame-5 > .frame-11 {
+        display: flex;
+        flex-direction: row;
+        width: 700px;
+        height: auto;
+        min-height: auto;
+        background: var(--purple-04);
+        border-radius: 22px;
+        border: 1px solid #C8C9FF;
+        overflow: hidden;
+        box-shadow: 0 6px 30px rgba(117, 87, 227, 0.10);
+    }
+
+    /* Card positions — staggered top-right → mid-left → bottom-center */
+    .jampa-web .frame-5 > .frame-6  { top: 30px;  left: 900px; }
+    .jampa-web .frame-5 > .frame-9  { top: 610px; left: 420px; }
+    .jampa-web .frame-5 > .frame-11 { top: 320px; left: 30px;  }
+
+    /* Hide old rectangle bg divs */
+    .jampa-web .frame-5 > .frame-6 > .rectangle,
+    .jampa-web .frame-5 > .frame-9 > .rectangle,
+    .jampa-web .frame-5 > .frame-11 > .rectangle {
+        display: none;
+    }
+
+    /* Photos: right-side flex column (RTL → visually left = end side) */
+    .jampa-web .frame-5 > .frame-6 > .young-woman-looking,
+    .jampa-web .frame-5 > .frame-9 > .young-woman-looking-2,
+    .jampa-web .frame-5 > .frame-11 > .young-woman-looking {
+        position: relative;
+        top: auto;
+        left: auto;
+        flex-shrink: 0;
+        width: 220px;
+        height: auto;
+        align-self: stretch;
+        object-fit: cover;
+        object-position: top center;
+    }
+
+    /* Eden's landscape photo — show face area */
+    .jampa-web .frame-5 > .frame-11 > .young-woman-looking {
+        object-position: 50% 18%;
+    }
+
+    /* Text wrappers: fill remaining space */
+    .jampa-web .frame-5 > .frame-6 > .frame-7,
+    .jampa-web .frame-5 > .frame-9 > .frame-10,
+    .jampa-web .frame-5 > .frame-11 > .frame-12 {
+        position: relative;
+        top: auto;
+        right: auto;
+        flex: 1;
+        width: auto;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        gap: 14px;
+        padding: 28px 32px 28px 20px;
+    }
+
+    /* Author block */
+    .jampa-web .frame-5 article .frame-8 {
+        width: auto;
+        align-items: flex-start;
+    }
+
+    /* Subtitle lines — allow wrapping */
+    .jampa-web .frame-5 article .title-8,
+    .jampa-web .frame-5 article .title-10,
+    .jampa-web .frame-5 article .title-11 {
+        white-space: normal;
+        margin-left: 0;
+    }
+
+    /* Quote SVG — absolute top-right corner of card */
+    .jampa-web .frame-5 > .frame-6 > .title-wrapper,
+    .jampa-web .frame-5 > .frame-9 > .title-wrapper,
+    .jampa-web .frame-5 > .frame-11 > .title-wrapper {
+        position: absolute;
+        top: 14px;
+        right: 16px;
+        left: auto;
+        width: 52px;
+        height: auto;
+    }
+
 }
 
 /* ===== PRICING SECTION ===== */
@@ -5984,4 +6083,104 @@
 .pricing-cards--mobile .pricing-card {
     max-width: 100%;
     width: 100%;
+}
+/* ===== TESTIMONIAL CARDS (desktop) ===== */
+@media (min-width: 992px) {
+    .jampa-web .frame-5 {
+        height: 803px;
+    }
+
+    /* Base card */
+    .jampa-web .tc {
+        position: absolute;
+        display: flex;
+        flex-direction: row;   /* RTL: text goes right, image goes left */
+        width: 700px;
+        background: var(--purple-04);
+        border-radius: 22px;
+        border: 1px solid #C8C9FF;
+        overflow: hidden;
+        box-shadow: 0 6px 28px rgba(117, 87, 227, 0.10);
+    }
+
+    /* Staggered positions */
+    .jampa-web .tc--1 { top: 30px;  left: 900px; }   /* Oshrat  — top right  */
+    .jampa-web .tc--2 { top: 610px; left: 420px; }   /* Anat    — bottom ctr */
+    .jampa-web .tc--3 { top: 320px; left: 30px;  }   /* Eden    — mid left   */
+
+    /* Text body */
+    .jampa-web .tc__body {
+        flex: 1;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        gap: 14px;
+        padding: 30px 30px 30px 24px;
+        position: relative;
+        min-width: 0;
+    }
+
+    /* Quote SVG — top-right of body */
+    .jampa-web .tc__quote {
+        position: absolute;
+        top: 14px;
+        right: 14px;
+        width: 50px;
+    }
+    .jampa-web .tc__quote img {
+        width: 100%;
+        display: block;
+    }
+
+    /* Quote text */
+    .jampa-web .tc__text {
+        font-family: "Rubik", Helvetica;
+        font-weight: 400;
+        color: var(--text);
+        font-size: 17px;
+        letter-spacing: -0.34px;
+        line-height: 25px;
+        direction: rtl;
+        margin: 0;
+    }
+
+    /* Author block */
+    .jampa-web .tc__author {
+        display: flex;
+        flex-direction: column;
+        gap: 2px;
+    }
+    .jampa-web .tc__name {
+        font-family: "Rubik", Helvetica;
+        font-weight: 600;
+        color: var(--text);
+        font-size: 16px;
+        line-height: 22px;
+        direction: rtl;
+        font-style: normal;
+    }
+    .jampa-web .tc__role {
+        font-family: "Rubik", Helvetica;
+        font-weight: 400;
+        color: #666;
+        font-size: 14px;
+        line-height: 20px;
+        direction: rtl;
+        margin: 0;
+    }
+
+    /* Photo — flex item on the physical left (RTL end side) */
+    .jampa-web .tc__img {
+        flex-shrink: 0;
+        width: 220px;
+        align-self: stretch;
+        object-fit: cover;
+        object-position: top center;
+        display: block;
+    }
+
+    /* Eden's landscape photo — crop to face area */
+    .jampa-web .tc__img--landscape {
+        object-position: 48% 18%;
+    }
 }
