@@ -921,7 +921,8 @@
         align-self: stretch;
         width: 100%;
         height: auto;
-        padding-bottom: 40px;
+        padding: 0 16px 40px 16px;
+        box-sizing: border-box;
     }
 
     .jampa-mobile .vector-2 {
