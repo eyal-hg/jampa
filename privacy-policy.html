@@ -1,0 +1,378 @@
+<!doctype html>
+<html dir="rtl" lang="he">
+<head>
+    <meta charset="utf-8"/>
+    <meta content="width=device-width, initial-scale=1" name="viewport"/>
+    <title>מדיניות פרטיות | JAMPA</title>
+    <link rel="icon" type="image/x-icon" href="favicon-jampa.ico">
+    <link rel="shortcut icon" href="favicon-jampa.ico"/>
+    <link href="style.css?v=3" rel="stylesheet"/>
+    <style>
+        /* ── Privacy policy page ── */
+        body { background: #fff; }
+
+        .privacy-hero {
+            background: #EDEEFF;
+            padding: 64px 24px 48px;
+            text-align: center;
+        }
+        .privacy-hero__label {
+            display: inline-block;
+            background: #e0daff;
+            border-radius: 20px;
+            padding: 6px 18px;
+            font-family: 'Rubik', Helvetica, sans-serif;
+            font-size: 15px;
+            font-weight: 500;
+            color: #7557E3;
+            margin-bottom: 16px;
+        }
+        .privacy-hero__title {
+            font-family: 'Rubik', Helvetica, sans-serif;
+            font-size: 36px;
+            font-weight: 700;
+            color: #1a1a2e;
+            margin: 0 0 12px;
+        }
+        .privacy-hero__sub {
+            font-family: 'Rubik', Helvetica, sans-serif;
+            font-size: 16px;
+            color: #696971;
+            margin: 0;
+        }
+
+        .privacy-content {
+            max-width: 820px;
+            margin: 0 auto;
+            padding: 56px 24px 80px;
+        }
+
+        .privacy-content h2 {
+            font-family: 'Rubik', Helvetica, sans-serif;
+            font-size: 22px;
+            font-weight: 600;
+            color: #7557E3;
+            margin: 40px 0 12px;
+            padding-bottom: 8px;
+            border-bottom: 2px solid #EDEEFF;
+        }
+        .privacy-content h2:first-child { margin-top: 0; }
+
+        .privacy-content p,
+        .privacy-content li {
+            font-family: 'Rubik', Helvetica, sans-serif;
+            font-size: 16px;
+            line-height: 1.8;
+            color: #444;
+        }
+        .privacy-content ul {
+            padding-right: 24px;
+            margin: 8px 0 16px;
+        }
+        .privacy-content ul li { margin-bottom: 6px; }
+
+        .privacy-content a { color: #7557E3; text-decoration: underline; }
+
+        .privacy-content .update-note {
+            background: #f5f4ff;
+            border-right: 4px solid #7557E3;
+            border-radius: 6px;
+            padding: 14px 18px;
+            font-size: 14px;
+            color: #555;
+            margin-bottom: 36px;
+        }
+
+        /* ── Responsive ── */
+        @media (max-width: 768px) {
+            .privacy-hero__title { font-size: 26px; }
+            .privacy-content { padding: 36px 18px 60px; }
+            .privacy-content h2 { font-size: 18px; }
+            .privacy-content p,
+            .privacy-content li { font-size: 15px; }
+        }
+
+        /* Hide desktop footer on mobile, mobile footer on desktop */
+        .desktop-footer { display: block; }
+        .mobile-footer  { display: none; }
+        @media (max-width: 991px) {
+            .desktop-footer { display: none; }
+            .mobile-footer  { display: block; }
+        }
+    </style>
+</head>
+<body>
+
+<!-- ══ HEADER (identical to index.html) ══ -->
+<header class="header" style="position:sticky;top:0;z-index:9999;">
+    <div class="frame">
+        <div class="div mobile-hidden">
+            <a aria-label="התחברות" class="frame-2" href="https://admin.jampa.ai" target="_blank" rel="noopener noreferrer" role="button">
+                <svg fill="none" height="24" viewBox="0 0 21 24" width="21" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M13.772 11.1284C15.3076 10.0084 16.3077 8.19581 16.3077 6.15384C16.3077 2.76061 13.5471 0 10.1538 0C6.76059 0 3.99998 2.76061 3.99998 6.15384C3.99998 8.19581 4.99997 10.0084 6.53569 11.1284C2.71819 12.5892 0 16.2905 0 20.6154C0 22.4817 1.51833 24 3.38461 24H16.923C18.7893 24 20.3077 22.4817 20.3077 20.6154C20.3077 16.2905 17.5895 12.5892 13.772 11.1284ZM5.84616 6.15384C5.84616 3.77859 7.77858 1.84617 10.1538 1.84617C12.5291 1.84617 14.4615 3.77859 14.4615 6.15384C14.4615 8.52909 12.5291 10.4616 10.1538 10.4616C7.77858 10.4616 5.84616 8.52909 5.84616 6.15384ZM16.923 22.1538H3.38461C2.53631 22.1538 1.84617 21.4637 1.84617 20.6153C1.84617 16.0344 5.57292 12.3076 10.1539 12.3076C14.7348 12.3076 18.4616 16.0344 18.4616 20.6153C18.4615 21.4637 17.7714 22.1538 16.923 22.1538Z"
+                          fill="white"/>
+                </svg>
+                <span class="text-wrapper">התחברות</span>
+            </a>
+        </div>
+        <div class="frame-3">
+            <nav aria-label="Main navigation" class="frame-4 mobile-hidden" role="navigation">
+                <div class="title-wrapper"><a class="title" href="index.html#contact">צור קשר</a></div>
+                <div class="title-wrapper"><a class="title" href="index.html#benefits">למה כדאי?</a></div>
+                <div class="title-wrapper"><a class="title" href="index.html#news">אז מה חדש?</a></div>
+            </nav>
+            <a class="frame-5" href="index.html" aria-label="עמוד הבית JAMPA">
+                <div class="div-wrapper"><span class="text-wrapper-2">Jampa</span></div>
+                <div class="vector-wrapper">
+                    <svg fill="none" height="38" viewBox="0 0 39 38" width="39" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M26.2502 13.2962C28.8973 18.1969 25.248 23.3437 19.9892 27.4468C8.89312 21.0565 10.3332 13.4655 13.7926 12.1984C16.5403 11.1405 18.6458 12.6084 19.6491 14.8387C21.2437 11.1062 25.1578 11.2739 26.2502 13.2962Z"
+                              fill="#C8CCFF"/>
+                        <path d="M6.79842 24.7323C6.79842 24.7323 9.44089 30.2841 5.90465 34.8742C14.4113 32.3212 31.1596 22.3852 26.2502 13.2962C25.1141 11.1929 20.9257 11.0958 19.469 15.306C17.6481 20.5687 19.9941 20.157 20.1583 19.3298C20.9568 15.306 18.2013 10.5011 13.7926 12.1984C10.1968 13.5154 8.78274 21.6647 21.3603 28.1964C27.346 30.0187 34.3899 26.5287 36.1933 20.7429C37.9967 14.9572 35.2052 7.30323 28.1663 3.78376C21.504 0.452627 15.4813 0.973171 9.52341 3.78376C0.65044 7.96955 -0.299785 17.5269 5.09146 21.9548"
+                              stroke="#7557E3" stroke-linecap="round" stroke-linejoin="round" stroke-width="0.639904"/>
+                    </svg>
+                </div>
+                <span class="text-wrapper-3">Ai</span>
+            </a>
+        </div>
+    </div>
+</header>
+
+<!-- ══ HERO ══ -->
+<section class="privacy-hero">
+    <div class="privacy-hero__label">מסמך משפטי</div>
+    <h1 class="privacy-hero__title">מדיניות פרטיות</h1>
+    <p class="privacy-hero__sub">עדכון אחרון: מאי 2025</p>
+</section>
+
+<!-- ══ CONTENT ══ -->
+<main class="privacy-content">
+
+    <div class="update-note">
+        מסמך זה מפרט כיצד JAMPA אוספת, מעבדת ומגנה על המידע האישי שלכם. אנא קראו בעיון. לשאלות — <a href="mailto:info@jampa.ai">info@jampa.ai</a>
+    </div>
+
+    <h2>1. מי אנחנו?</h2>
+    <p>
+        JAMPA ("החברה", "אנחנו") היא פלטפורמת בינה מלאכותית המיועדת לפסיכולוגים, מטפלים ומאמנים מנטליים.
+        האתר הראשי: <a href="https://jampa.ai" target="_blank" rel="noopener">jampa.ai</a>.
+        לפניות בנושא פרטיות: <a href="mailto:info@jampa.ai">info@jampa.ai</a>
+    </p>
+
+    <h2>2. איזה מידע אנחנו אוספים?</h2>
+    <p>אנחנו עשויים לאסוף את סוגי המידע הבאים:</p>
+    <ul>
+        <li><strong>מידע שמזהה אתכם:</strong> שם, כתובת דוא"ל, מספר טלפון — כאשר יוצרים קשר דרך האתר או נרשמים לשירות.</li>
+        <li><strong>מידע שימוש:</strong> דפים שביקרתם בהם, זמן שהייה, פעולות בתוך הפלטפורמה.</li>
+        <li><strong>מידע טכני:</strong> כתובת IP, סוג דפדפן, מערכת הפעלה, רזולוציה.</li>
+        <li><strong>מידע קליני (למנויים בלבד):</strong> נתוני מטופלים שמוזנים על-ידי המטפל לצורך השירות. מידע זה שייך למטפל ומוגן בהתאם לחוק.</li>
+    </ul>
+
+    <h2>3. כיצד אנחנו משתמשים במידע?</h2>
+    <ul>
+        <li>מתן השירות, תמיכה טכנית ושיפורו.</li>
+        <li>תקשורת עמכם בנושא חשבונכם או בקשות שהגשתם.</li>
+        <li>שליחת עדכונים ותוכן שיווקי — בהסכמה בלבד, עם אפשרות להסרה בכל עת.</li>
+        <li>עמידה בדרישות החוק, כולל חוק הגנת הפרטיות, תשמ"א-1981 ותקנות אבטחת מידע.</li>
+        <li>ניתוח אנונימי לשיפור חוויית המשתמש.</li>
+    </ul>
+
+    <h2>4. מידע קליני ומטופלים</h2>
+    <p>
+        JAMPA מעבדת מידע קליני אך ורק כ<strong>מעבד מידע</strong> (Data Processor) מטעם המטפל, שהוא <strong>בעל המידע</strong> (Data Controller).
+        אחריות ההיתר לשימוש במידע, הסכמת המטופל ושמירת סודיות מקצועית — מוטלת על המטפל בהתאם לחוקי בריאות ואתיקה מקצועית חלים.
+    </p>
+    <ul>
+        <li>אין אנו מוכרים מידע קליני לצד שלישי כלשהו.</li>
+        <li>מידע קליני לא ישמש לאימון מודלי AI ללא הסכמה מפורשת של המטפל.</li>
+        <li>המטפל רשאי לבקש מחיקה מלאה של כל הנתונים בכל עת.</li>
+    </ul>
+
+    <h2>5. שיתוף מידע עם צדדים שלישיים</h2>
+    <p>אנחנו לא מוכרים מידע. אנחנו עשויים לשתף מידע עם:</p>
+    <ul>
+        <li><strong>ספקי שירותי ענן ואחסון</strong> (כגון AWS / Google Cloud) — לצורך הפעלת הפלטפורמה בלבד, בכפוף להסכמי עיבוד מידע.</li>
+        <li><strong>שירותי ניתוח (Analytics)</strong> — בצורה מאוגדת ואנונימית בלבד.</li>
+        <li><strong>רשויות חוק</strong> — רק במקרה של חובה חוקית מפורשת.</li>
+    </ul>
+
+    <h2>6. אבטחת מידע</h2>
+    <p>
+        אנחנו נוקטים באמצעי אבטחה מקצועיים: הצפנת SSL/TLS בהעברת מידע, הצפנת מידע במנוחה, בקרת גישה מבוססת תפקידים, וגיבויים שוטפים.
+        עם זאת, אין אבטחה מוחלטת — במקרה של פרצת אבטחה מהותית נודיע לכם בהתאם לחוק.
+    </p>
+
+    <h2>7. עוגיות (Cookies)</h2>
+    <p>
+        האתר עשוי להשתמש בעוגיות הכרחיות לתפקוד הבסיסי (כגון שמירת הגדרות) ועוגיות אנליטיות אנונימיות.
+        ניתן לבטל עוגיות דרך הגדרות הדפדפן, אך הדבר עשוי להשפיע על חוויית השימוש.
+    </p>
+
+    <h2>8. שמירת מידע</h2>
+    <p>
+        מידע אישי נשמר כל עוד החשבון פעיל, ובתקופה של עד 12 חודשים לאחר סיום ההתקשרות לצרכים עסקיים ומשפטיים.
+        מידע קליני נמחק לפי בקשה מפורשת של המטפל או בתוך 30 יום מסיום החוזה, לפי המוקדם.
+    </p>
+
+    <h2>9. זכויותיכם</h2>
+    <p>בהתאם לחוק הגנת הפרטיות הישראלי ולתקנות GDPR (ככל שחלות), יש לכם זכות:</p>
+    <ul>
+        <li>לעיין במידע שנשמר עליכם.</li>
+        <li>לתקן מידע שגוי.</li>
+        <li>לבקש מחיקת המידע שלכם.</li>
+        <li>להתנגד לעיבוד מידע לצרכי שיווק.</li>
+        <li>לקבל את המידע שלכם בפורמט ניתן לניוד.</li>
+    </ul>
+    <p>לממש זכויות אלו — שלחו מייל ל: <a href="mailto:info@jampa.ai">info@jampa.ai</a></p>
+
+    <h2>10. קישורים לאתרים חיצוניים</h2>
+    <p>
+        האתר עשוי להכיל קישורים לאתרים חיצוניים. אנחנו אינם אחראים למדיניות הפרטיות של אותם אתרים,
+        ומומלץ לעיין בה בנפרד.
+    </p>
+
+    <h2>11. שינויים במדיניות</h2>
+    <p>
+        אנחנו עשויים לעדכן מדיניות זו מעת לעת. שינויים מהותיים יפורסמו באתר ויישלח עדכון בדוא"ל למנויים פעילים.
+        המשך השימוש לאחר עדכון מהווה הסכמה למדיניות החדשה.
+    </p>
+
+    <h2>12. יצירת קשר</h2>
+    <p>
+        לכל שאלה, בקשה או תלונה בנושא פרטיות:
+    </p>
+    <ul>
+        <li>דוא"ל: <a href="mailto:info@jampa.ai">info@jampa.ai</a></li>
+        <li>אתר: <a href="https://jampa.ai" target="_blank" rel="noopener">jampa.ai</a></li>
+    </ul>
+
+</main>
+
+<!-- ══ FOOTER — Desktop ══ -->
+<footer class="footer desktop-footer" data-model-id="744:8585" role="contentinfo">
+    <div class="frame">
+        <div class="div">
+            <div class="frame-2">
+                <div aria-label="Jampa AI Logo" class="logo" role="img">
+                    <div class="frame-wrapper">
+                        <div class="frame-3">
+                            <div class="div-wrapper">
+                                <div class="text-wrapper">Jampa</div>
+                            </div>
+                            <div class="vector-wrapper">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="82" height="81" viewBox="0 0 82 81" fill="none">
+                                    <path d="M56.1387 28.4353C61.7997 38.9158 53.9954 49.9229 42.749 58.6976C19.0189 45.0313 22.0986 28.7973 29.4969 26.0875C35.3731 23.8251 39.876 26.9642 42.0215 31.734C45.4317 23.7517 53.8025 24.1102 56.1387 28.4353Z" fill="#C8CCFF"/>
+                                    <path d="M14.5392 52.8923C14.5392 52.8923 20.1903 64.7654 12.6277 74.5818C30.82 69.1221 66.6379 47.8729 56.1387 28.4353C53.7089 23.937 44.7517 23.7293 41.6364 32.7333C37.7423 43.9882 42.7595 43.1076 43.1105 41.3387C44.8183 32.7333 38.9253 22.4575 29.4969 26.0875C21.807 28.9041 18.7828 46.3321 45.6812 60.3006C58.4822 64.1979 73.5461 56.7342 77.4029 44.3608C81.2597 31.9874 75.2899 15.6187 60.2364 8.09193C45.9885 0.967986 33.1083 2.08122 20.3668 8.09195C1.39111 17.0436 -0.641037 37.483 10.8887 46.9525" stroke="#7557E3" stroke-width="1.3685" stroke-linecap="round" stroke-linejoin="round"/>
+                                </svg>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="text-wrapper-2">Ai</div>
+                </div>
+                <nav class="social-media" aria-label="Social media links">
+                    <a href="#" class="social-media__link" aria-label="WhatsApp">
+                        <img class="group" src="https://jampa-landing.web.app/img/group-5694.png" alt="WhatsApp" />
+                    </a>
+                    <a href="#" class="social-media__link" aria-label="Facebook">
+                        <img class="group" src="https://jampa-landing.web.app/img/group-5777.png" alt="Facebook icon" />
+                    </a>
+                    <a href="#" class="social-media__link" aria-label="Instagram">
+                        <img class="group" src="https://jampa-landing.web.app/img/group-5697.png" alt="Instagram" />
+                    </a>
+                </nav>
+                <div class="title-wrapper">
+                    <a class="title" href="https://www.JampaAI.com" rel="noopener noreferrer" target="_blank">www.JampaAI.com</a>
+                </div>
+            </div>
+            <nav aria-label="Footer Navigation" class="frame-4">
+                <div class="frame-5">
+                    <h2 class="title-2">המוצר</h2>
+                    <ul class="frame-6">
+                        <li class="footer-links-3"><a class="title-3" href="index.html#contact">לבדיקת התאמה</a></li>
+                        <li class="footer-links-3"><a class="title-3" href="index.html#benefits">למה כדאי?</a></li>
+                        <li class="footer-links-3"><a class="title-3" href="index.html#news">אז מה חדש?</a></li>
+                    </ul>
+                </div>
+                <div class="frame-5">
+                    <h2 class="title-2">משפטי</h2>
+                    <ul class="frame-6">
+                        <li class="footer-links-3"><a class="title-3" href="privacy-policy.html">מדיניות פרטיות</a></li>
+                    </ul>
+                </div>
+                <div class="frame-5">
+                    <h2 class="title-2">צור קשר</h2>
+                    <ul class="frame-6">
+                        <li class="footer-links-3"><a class="title-3" href="index.html#contact">דברו איתנו</a></li>
+                        <li class="footer-links-3"><a class="title-3" href="https://www.JampaAI.com">www.JampaAI.com</a></li>
+                    </ul>
+                </div>
+            </nav>
+        </div>
+        <div aria-hidden="true" class="frame-7">
+            <img alt="" class="img" src="https://jampa-landing.web.app/img/vector-8.svg"/>
+            <img alt="" class="vector-2" src="https://jampa-landing.web.app/img/vector-12.svg"/>
+            <img alt="" class="vector-3" src="https://jampa-landing.web.app/img/vector-10.svg"/>
+            <img alt="" class="img" src="https://jampa-landing.web.app/img/vector-9.svg"/>
+            <img alt="" class="vector-4" src="https://jampa-landing.web.app/img/vector-11.svg"/>
+        </div>
+    </div>
+</footer>
+
+<!-- ══ FOOTER — Mobile ══ -->
+<footer class="footer mobile-footer" data-model-id="752:13939">
+    <div class="frame-5">
+        <div class="logo" aria-label="Jampa AI Logo">
+            <div class="frame-6">
+                <div class="frame-7"><span class="text-wrapper-2">Jampa</span></div>
+                <svg xmlns="http://www.w3.org/2000/svg" width="66" height="65" viewBox="0 0 66 65" fill="none">
+                    <path d="M45.3346 22.9629C49.9061 31.4263 43.6038 40.3151 34.5218 47.4011C15.3586 36.3649 17.8456 23.2552 23.8201 21.0669C28.5654 19.2399 32.2017 21.7749 33.9343 25.6267C36.6882 19.1806 43.448 19.4702 45.3346 22.9629Z" fill="#C8CCFF"/>
+                    <path d="M11.741 42.713C11.741 42.713 16.3046 52.3011 10.1975 60.2283C24.8886 55.8193 53.8132 38.6596 45.3346 22.9629C43.3724 19.3303 36.139 19.1626 33.6233 26.4337C30.4786 35.5225 34.5303 34.8114 34.8137 33.383C36.1928 26.4337 31.434 18.1355 23.8201 21.0669C17.6101 23.3414 15.168 37.4153 36.8897 48.6956C47.2271 51.8428 59.3919 45.8155 62.5065 35.8234C65.621 25.8313 60.8001 12.6128 48.6437 6.53462C37.1379 0.781694 26.7365 1.68068 16.4471 6.53463C1.12335 13.7635 -0.517705 30.2693 8.79307 37.9164" stroke="#7557E3" stroke-width="1.10512" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+            </div>
+            <span class="text-wrapper-3">Ai</span>
+        </div>
+        <nav class="social-media" aria-label="Social media links">
+            <a href="#" class="social-media__link" aria-label="WhatsApp">
+                <img class="group" src="https://jampa-landing.web.app/img/group-5694.png" alt="WhatsApp" />
+            </a>
+            <a href="#" class="social-media__link" aria-label="Facebook">
+                <img class="group" src="https://jampa-landing.web.app/img/group-5777.png" alt="Facebook icon" />
+            </a>
+            <a href="#" class="social-media__link" aria-label="Instagram">
+                <img class="group" src="https://jampa-landing.web.app/img/group-5697.png" alt="Instagram" />
+            </a>
+        </nav>
+        <div class="frame-8"><span class="title-2">www.JampaAI.com</span></div>
+    </div>
+    <div class="frame-9" aria-hidden="true">
+        <svg style="width:100%;" width="375" height="139" viewBox="0 0 375 139" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <g clip-path="url(#clip0_pp_mobile)">
+                <path opacity="0.2" d="M333.11 28.6701C182.663 0.485701 13.2009 62.9287 -52.7246 97.6732V171.779H1088.74V46.4068C1070.52 53.372 1001.57 73.3764 871.528 97.6732C708.982 128.044 521.168 63.9005 333.11 28.6701Z" fill="#989EF5"/>
+                <path opacity="0.2" d="M327.036 16.8234C176.589 -11.361 7.12669 51.082 -58.7988 85.8265V159.932H1082.67V34.5602C1064.45 41.5253 995.491 61.5297 865.454 85.8265C702.908 116.198 515.093 52.0539 327.036 16.8234Z" stroke="#989EF5" stroke-width="0.971875"/>
+                <path opacity="0.2" d="M149.426 33.5299C-1.02048 5.34556 -38.551 62.9292 -104.477 97.6737V171.779H1036.99V46.4074C1018.77 53.3725 949.813 51.2668 819.776 75.5636C657.23 105.935 337.484 68.7604 149.426 33.5299Z" fill="#989EF5"/>
+                <path opacity="0.2" d="M915.02 28.6701C1065.47 0.485701 1234.93 62.9287 1300.85 97.6732V171.779H-162.06V46.4068C-143.838 53.372 246.565 73.3764 376.601 97.6732C539.148 128.044 726.962 63.9005 915.02 28.6701Z" fill="#989EF5"/>
+            </g>
+            <defs>
+                <clipPath id="clip0_pp_mobile">
+                    <rect width="933" height="139.464" fill="white"/>
+                </clipPath>
+            </defs>
+        </svg>
+    </div>
+</footer>
+
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+        window.addEventListener("resize", calculateNewScale);
+
+        function calculateNewScale() {
+            const realWidth = document.documentElement.clientWidth;
+            const zoom = Number((window.outerWidth / 1920).toFixed(3));
+            document.body.style.zoom = realWidth <= 991 ? 1 : zoom;
+        }
+
+        calculateNewScale();
+    });
+</script>
+
+</body>
+</html>
