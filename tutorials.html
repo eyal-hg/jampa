@@ -1,0 +1,665 @@
+<!doctype html>
+<html dir="rtl" lang="he">
+<head>
+    <meta charset="utf-8"/>
+    <meta content="width=device-width, initial-scale=1" name="viewport"/>
+    <title>הדרכות | JAMPA</title>
+    <link rel="icon" type="image/x-icon" href="favicon-jampa.ico">
+    <link rel="shortcut icon" href="favicon-jampa.ico"/>
+    <link href="style.css?v=3" rel="stylesheet"/>
+    <style>
+        /* ── Tutorials page specific styles ── */
+        :root {
+            --purple-01: #7557E3;
+            --purple-03: #D3D6FF;
+            --bg: #f5f5ff;
+            --border: #E0E2F5;
+            --grey: #696971;
+            --text: #1a1a2e;
+        }
+
+        body { background: var(--bg); }
+
+        /* Sticky header */
+        .header {
+            position: sticky !important;
+            top: 0 !important;
+            z-index: 100 !important;
+        }
+
+        /* ── Video Modal ── */
+        .vid-modal {
+            display: none;
+            position: fixed;
+            inset: 0;
+            background: rgba(0,0,0,0.88);
+            z-index: 1000;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+        }
+
+        .vid-modal.open { display: flex; }
+
+        .vid-modal__inner {
+            position: relative;
+            width: 100%;
+            max-width: 420px; /* portrait */
+        }
+
+        .vid-modal__inner.landscape {
+            max-width: 900px;
+        }
+
+        .vid-modal__ratio {
+            position: relative;
+            width: 100%;
+            padding-top: 125%; /* 4:5 portrait (Vimeo default) */
+            border-radius: 12px;
+            overflow: hidden;
+            background: #000;
+        }
+
+        .vid-modal__inner.landscape .vid-modal__ratio {
+            padding-top: 56.25%; /* 16:9 landscape */
+        }
+
+        .vid-modal__ratio iframe {
+            position: absolute;
+            inset: 0;
+            width: 100%;
+            height: 100%;
+            border: none;
+        }
+
+        .vid-modal__close {
+            position: absolute;
+            top: -44px;
+            left: 0;
+            background: none;
+            border: none;
+            color: #fff;
+            font-size: 32px;
+            cursor: pointer;
+            line-height: 1;
+            padding: 4px 8px;
+            opacity: 0.8;
+            transition: opacity 0.2s;
+        }
+
+        .vid-modal__close:hover { opacity: 1; }
+
+        /* Hero */
+        .tut-hero {
+            background: #EDEEFF;
+            padding: 56px 24px 72px;
+            text-align: center;
+            color: var(--text);
+        }
+
+        .tut-hero__badge {
+            display: inline-block;
+            background: #D3D6FF;
+            color: var(--purple-01);
+            border-radius: 20px;
+            padding: 6px 20px;
+            font-family: 'Rubik', Helvetica;
+            font-size: 15px;
+            font-weight: 500;
+            margin-bottom: 18px;
+        }
+
+        .tut-hero h1 {
+            font-family: 'Rubik', Helvetica;
+            font-size: clamp(26px, 4vw, 44px);
+            font-weight: 700;
+            margin-bottom: 14px;
+            line-height: 1.3;
+            color: #1a1a2e;
+        }
+
+        .tut-hero p {
+            font-family: 'Rubik', Helvetica;
+            font-size: 17px;
+            color: var(--grey);
+            max-width: 520px;
+            margin: 0 auto;
+            line-height: 1.7;
+        }
+
+        /* Search */
+        .tut-search {
+            max-width: 480px;
+            margin: -26px auto 0;
+            padding: 0 20px;
+            position: relative;
+            z-index: 10;
+        }
+
+        .tut-search input {
+            width: 100%;
+            padding: 15px 22px;
+            border-radius: 50px;
+            border: 1px solid var(--border);
+            box-shadow: 0 2px 12px rgba(0,0,0,0.08);
+            font-family: 'Rubik', Helvetica;
+            font-size: 16px;
+            direction: rtl;
+            outline: none;
+            color: var(--text);
+        }
+
+        .tut-search input::placeholder { color: #aaa; }
+        .tut-search input:focus { box-shadow: 0 2px 16px rgba(117,87,227,0.18); border-color: #b8baff; }
+
+        /* Main */
+        .tut-main {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 56px 20px 80px;
+        }
+
+        /* Category */
+        .tut-category { margin-bottom: 52px; }
+
+        .tut-category__header {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin-bottom: 22px;
+            padding-bottom: 14px;
+            border-bottom: 2px solid var(--border);
+        }
+
+        .tut-category__icon {
+            width: 40px; height: 40px;
+            background: var(--purple-03);
+            border-radius: 10px;
+            display: flex; align-items: center; justify-content: center;
+            font-size: 20px;
+            flex-shrink: 0;
+        }
+
+        .tut-category__title {
+            font-family: 'Rubik', Helvetica;
+            font-size: 22px;
+            font-weight: 600;
+            color: var(--text);
+        }
+
+        .tut-category__count {
+            font-family: 'Rubik', Helvetica;
+            font-size: 13px;
+            color: var(--grey);
+            background: var(--border);
+            border-radius: 12px;
+            padding: 3px 10px;
+        }
+
+        /* Grid */
+        .tut-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+            gap: 16px;
+        }
+
+        /* Card */
+        .tut-card {
+            background: #fff;
+            border-radius: 16px;
+            overflow: hidden;
+            box-shadow: 0 2px 12px rgba(117,87,227,0.07);
+            border: 1px solid var(--border);
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+
+        .tut-card:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 28px rgba(117,87,227,0.15);
+        }
+
+        /* Thumbnail */
+        .tut-thumb {
+            position: relative;
+            width: 100%;
+            padding-top: 56.25%; /* landscape default */
+            background: linear-gradient(135deg, #E8EAFF 0%, #D3D6FF 100%);
+            overflow: hidden;
+        }
+
+        /* portrait class only affects modal, not the card thumbnail */
+
+        .tut-thumb iframe {
+            position: absolute;
+            top: 0; left: 0;
+            width: 100%; height: 100%;
+            border: none;
+        }
+
+        .tut-thumb__play {
+            position: absolute;
+            top: 50%; left: 50%;
+            transform: translate(-50%, -50%);
+            width: 52px; height: 52px;
+            background: var(--purple-01);
+            border-radius: 50%;
+            display: flex; align-items: center; justify-content: center;
+            pointer-events: none;
+            transition: transform 0.2s;
+        }
+
+        .tut-card:hover .tut-thumb__play { transform: translate(-50%, -50%) scale(1.1); }
+
+        .tut-thumb__play svg { width: 22px; height: 22px; margin-right: -3px; }
+
+        .tut-thumb__duration {
+            position: absolute;
+            bottom: 8px; left: 8px;
+            background: rgba(0,0,0,0.6);
+            color: #fff;
+            font-family: 'Rubik', Helvetica;
+            font-size: 12px;
+            padding: 2px 8px;
+            border-radius: 6px;
+            font-weight: 500;
+        }
+
+        /* Info */
+        .tut-card__info { padding: 16px 18px 18px; }
+
+        .tut-card__title {
+            font-family: 'Rubik', Helvetica;
+            font-size: 16px;
+            font-weight: 600;
+            color: var(--text);
+            margin-bottom: 6px;
+            line-height: 1.4;
+        }
+
+        .tut-card__desc {
+            font-family: 'Rubik', Helvetica;
+            font-size: 14px;
+            color: var(--grey);
+            line-height: 1.6;
+        }
+
+        /* Scroll animation */
+        .fade-up {
+            opacity: 0;
+            transform: translateY(24px);
+            transition: opacity 0.5s ease, transform 0.5s ease;
+        }
+        .fade-up.visible { opacity: 1; transform: none; }
+
+        /* Responsive */
+        @media (max-width: 600px) {
+            .tut-grid { grid-template-columns: 1fr; }
+            .tut-hero { padding: 48px 20px 64px; }
+        }
+    </style>
+</head>
+<body>
+
+<!-- ── Same header as index.html ── -->
+<header class="header">
+    <div class="frame">
+        <div class="div mobile-hidden">
+            <a aria-label="התחברות" class="frame-2" href="https://admin.jampa.ai" target="_blank" rel="noopener noreferrer" role="button">
+                <svg fill="none" height="24" viewBox="0 0 21 24" width="21" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M13.772 11.1284C15.3076 10.0084 16.3077 8.19581 16.3077 6.15384C16.3077 2.76061 13.5471 0 10.1538 0C6.76059 0 3.99998 2.76061 3.99998 6.15384C3.99998 8.19581 4.99997 10.0084 6.53569 11.1284C2.71819 12.5892 0 16.2905 0 20.6154C0 22.4817 1.51833 24 3.38461 24H16.923C18.7893 24 20.3077 22.4817 20.3077 20.6154C20.3077 16.2905 17.5895 12.5892 13.772 11.1284ZM5.84616 6.15384C5.84616 3.77859 7.77858 1.84617 10.1538 1.84617C12.5291 1.84617 14.4615 3.77859 14.4615 6.15384C14.4615 8.52909 12.5291 10.4616 10.1538 10.4616C7.77858 10.4616 5.84616 8.52909 5.84616 6.15384ZM16.923 22.1538H3.38461C2.53631 22.1538 1.84617 21.4637 1.84617 20.6153C1.84617 16.0344 5.57292 12.3076 10.1539 12.3076C14.7348 12.3076 18.4616 16.0344 18.4616 20.6153C18.4615 21.4637 17.7714 22.1538 16.923 22.1538Z"
+                          fill="white"/>
+                </svg>
+                <span class="text-wrapper">התחברות</span>
+            </a>
+        </div>
+        <div class="frame-3">
+            <nav aria-label="Main navigation" class="frame-4 mobile-hidden" role="navigation">
+                <div class="title-wrapper"><a class="title" href="index.html#contact">צור קשר</a></div>
+                <div class="title-wrapper"><a class="title" href="index.html#benefits">למה כדאי?</a></div>
+                <div class="title-wrapper"><a class="title" href="index.html#news">אז מה חדש?</a></div>
+                <div class="title-wrapper"><a class="title" href="tutorials.html">הדרכות</a></div>
+                <div class="title-wrapper"><a class="title" href="index.html">בית</a></div>
+            </nav>
+            <div class="frame-5">
+                <div class="div-wrapper"><span class="text-wrapper-2">Jampa</span></div>
+                <div class="vector-wrapper">
+                    <svg fill="none" height="38" viewBox="0 0 39 38" width="39" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M26.2502 13.2962C28.8973 18.1969 25.248 23.3437 19.9892 27.4468C8.89312 21.0565 10.3332 13.4655 13.7926 12.1984C16.5403 11.1405 18.6458 12.6084 19.6491 14.8387C21.2437 11.1062 25.1578 11.2739 26.2502 13.2962Z" fill="#C8CCFF"/>
+                        <path d="M6.79842 24.7323C6.79842 24.7323 9.44089 30.2841 5.90465 34.8742C14.4113 32.3212 31.1596 22.3852 26.2502 13.2962C25.1141 11.1929 20.9257 11.0958 19.469 15.306C17.6481 20.5687 19.9941 20.157 20.1583 19.3298C20.9568 15.306 18.2013 10.5011 13.7926 12.1984C10.1968 13.5154 8.78274 21.6647 21.3603 28.1964C27.346 30.0187 34.3899 26.5287 36.1933 20.7429C37.9967 14.9572 35.2052 7.30323 28.1663 3.78376C21.504 0.452627 15.4813 0.973171 9.52341 3.78376C0.65044 7.96955 -0.299785 17.5269 5.09146 21.9548" stroke="#7557E3" stroke-linecap="round" stroke-linejoin="round" stroke-width="0.639904"/>
+                    </svg>
+                </div>
+                <span class="text-wrapper-3">Ai</span>
+            </div>
+        </div>
+    </div>
+</header>
+
+<!-- Hero -->
+<section class="tut-hero">
+    <div class="tut-hero__badge">מרכז הידע של JAMPA</div>
+    <h1>סרטוני הדרכה קצרים</h1>
+    <p>כל מה שצריך לדעת כדי להפיק את המקסימום מ-JAMPA — בסרטונים קצרים וברורים</p>
+</section>
+
+<!-- Search -->
+<div class="tut-search">
+    <input type="search" id="tut-search" placeholder="חפש הדרכה..." aria-label="חיפוש הדרכות"/>
+</div>
+
+<!-- Main -->
+<main class="tut-main">
+
+    <!-- התחלה מהירה -->
+    <section class="tut-category fade-up" data-category="התחלה מהירה">
+        <div class="tut-category__header">
+            <div class="tut-category__icon">🚀</div>
+            <h2 class="tut-category__title">התחלה מהירה</h2>
+            <span class="tut-category__count">3 סרטונים</span>
+        </div>
+        <div class="tut-grid">
+
+            <div class="tut-card" data-title="הכרת הממשק">
+                <div class="tut-thumb">
+                    <!-- כשיש Vimeo ID: <iframe src="https://player.vimeo.com/video/VIMEO_ID?title=0&byline=0&portrait=0&color=7557E3" allowfullscreen></iframe> -->
+                    <div class="tut-thumb__play">
+                        <svg viewBox="0 0 24 24" fill="white"><path d="M8 5v14l11-7z"/></svg>
+                    </div>
+                    <span class="tut-thumb__duration">2:30</span>
+                </div>
+                <div class="tut-card__info">
+                    <h3 class="tut-card__title">הכרת הממשק</h3>
+                    <p class="tut-card__desc">סיור מהיר בכל חלקי המערכת — איפה כל דבר ואיך מתחילים</p>
+                </div>
+            </div>
+
+            <div class="tut-card" data-title="הוספת מטפל ראשון">
+                <div class="tut-thumb">
+                    <div class="tut-thumb__play">
+                        <svg viewBox="0 0 24 24" fill="white"><path d="M8 5v14l11-7z"/></svg>
+                    </div>
+                    <span class="tut-thumb__duration">1:45</span>
+                </div>
+                <div class="tut-card__info">
+                    <h3 class="tut-card__title">הוספת מטפל</h3>
+                    <p class="tut-card__desc">איך להוסיף פרופיל מטפל, להגדיר פרטים ולחבר לחשבון</p>
+                </div>
+            </div>
+
+            <div class="tut-card" data-title="הוספת מטופל חדש" data-vimeo="1188336609" data-orientation="portrait">
+                <div class="tut-thumb">
+                    <div class="tut-thumb__play">
+                        <svg viewBox="0 0 24 24" fill="white"><path d="M8 5v14l11-7z"/></svg>
+                    </div>
+                </div>
+                <div class="tut-card__info">
+                    <h3 class="tut-card__title">הוספת מטופל חדש</h3>
+                    <p class="tut-card__desc">יצירת פרופיל מטופל, מטרות טיפוליות ומידע רקע</p>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- הקלטה ותיעוד -->
+    <section class="tut-category fade-up" data-category="הקלטה ותיעוד פגישות">
+        <div class="tut-category__header">
+            <div class="tut-category__icon">🎙️</div>
+            <h2 class="tut-category__title">הקלטה ותיעוד פגישות</h2>
+            <span class="tut-category__count">3 סרטונים</span>
+        </div>
+        <div class="tut-grid">
+
+            <div class="tut-card" data-title="הקלטת פגישה">
+                <div class="tut-thumb">
+                    <div class="tut-thumb__play">
+                        <svg viewBox="0 0 24 24" fill="white"><path d="M8 5v14l11-7z"/></svg>
+                    </div>
+                    <span class="tut-thumb__duration">3:00</span>
+                </div>
+                <div class="tut-card__info">
+                    <h3 class="tut-card__title">הקלטת פגישה</h3>
+                    <p class="tut-card__desc">איך להפעיל הקלטה, מה לעשות בזמן הפגישה ואיך לסיים</p>
+                </div>
+            </div>
+
+            <div class="tut-card" data-title="עריכת סיכום פגישה">
+                <div class="tut-thumb">
+                    <div class="tut-thumb__play">
+                        <svg viewBox="0 0 24 24" fill="white"><path d="M8 5v14l11-7z"/></svg>
+                    </div>
+                    <span class="tut-thumb__duration">2:20</span>
+                </div>
+                <div class="tut-card__info">
+                    <h3 class="tut-card__title">עריכת סיכום פגישה</h3>
+                    <p class="tut-card__desc">סקירה, עריכה ואישור הסיכום האוטומטי לפני שליחה</p>
+                </div>
+            </div>
+
+            <div class="tut-card" data-title="שליחת סיכום למטופל">
+                <div class="tut-thumb">
+                    <div class="tut-thumb__play">
+                        <svg viewBox="0 0 24 24" fill="white"><path d="M8 5v14l11-7z"/></svg>
+                    </div>
+                    <span class="tut-thumb__duration">1:30</span>
+                </div>
+                <div class="tut-card__info">
+                    <h3 class="tut-card__title">שליחת סיכום למטופל</h3>
+                    <p class="tut-card__desc">איך שולחים סיכום אישי למטופל ישירות בוואטסאפ בקליק</p>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- הכנה לפגישה -->
+    <section class="tut-category fade-up" data-category="הכנה לפגישה">
+        <div class="tut-category__header">
+            <div class="tut-category__icon">📋</div>
+            <h2 class="tut-category__title">הכנה לפגישה</h2>
+            <span class="tut-category__count">2 סרטונים</span>
+        </div>
+        <div class="tut-grid">
+
+            <div class="tut-card" data-title="בריף הכנה חכם">
+                <div class="tut-thumb">
+                    <div class="tut-thumb__play">
+                        <svg viewBox="0 0 24 24" fill="white"><path d="M8 5v14l11-7z"/></svg>
+                    </div>
+                    <span class="tut-thumb__duration">2:00</span>
+                </div>
+                <div class="tut-card__info">
+                    <h3 class="tut-card__title">בריף הכנה חכם</h3>
+                    <p class="tut-card__desc">איך קוראים את הבריף לפני פגישה ומה כל חלק אומר</p>
+                </div>
+            </div>
+
+            <div class="tut-card" data-title="סופרוויזיון אישי">
+                <div class="tut-thumb">
+                    <div class="tut-thumb__play">
+                        <svg viewBox="0 0 24 24" fill="white"><path d="M8 5v14l11-7z"/></svg>
+                    </div>
+                    <span class="tut-thumb__duration">2:50</span>
+                </div>
+                <div class="tut-card__info">
+                    <h3 class="tut-card__title">סופרוויזיון אישי</h3>
+                    <p class="tut-card__desc">איך לקרוא את ניתוח הפגישה ולהפיק ממנו תובנות מקצועיות</p>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- מעקב ומשימות -->
+    <section class="tut-category fade-up" data-category="מעקב ומשימות">
+        <div class="tut-category__header">
+            <div class="tut-category__icon">✅</div>
+            <h2 class="tut-category__title">מעקב ומשימות</h2>
+            <span class="tut-category__count">2 סרטונים</span>
+        </div>
+        <div class="tut-grid">
+
+            <div class="tut-card" data-title="הגדרת משימות למטופל">
+                <div class="tut-thumb">
+                    <div class="tut-thumb__play">
+                        <svg viewBox="0 0 24 24" fill="white"><path d="M8 5v14l11-7z"/></svg>
+                    </div>
+                    <span class="tut-thumb__duration">2:15</span>
+                </div>
+                <div class="tut-card__info">
+                    <h3 class="tut-card__title">הגדרת משימות למטופל</h3>
+                    <p class="tut-card__desc">איך מגדירים משימות, תדירות תזכורות ומינון הפניות</p>
+                </div>
+            </div>
+
+            <div class="tut-card" data-title="מעקב התקדמות מטופל">
+                <div class="tut-thumb">
+                    <div class="tut-thumb__play">
+                        <svg viewBox="0 0 24 24" fill="white"><path d="M8 5v14l11-7z"/></svg>
+                    </div>
+                    <span class="tut-thumb__duration">1:55</span>
+                </div>
+                <div class="tut-card__info">
+                    <h3 class="tut-card__title">מעקב התקדמות מטופל</h3>
+                    <p class="tut-card__desc">קריאת גרף ההתקדמות וזיהוי מגמות לאורך הטיפול</p>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+</main>
+
+<!-- Same footer as index.html -->
+<footer class="footer" data-model-id="752:13939">
+    <div class="frame-5">
+        <div class="logo" aria-label="Jampa AI Logo">
+            <div class="frame-6">
+                <div class="frame-7"><span class="text-wrapper-2">Jampa</span></div>
+                <svg xmlns="http://www.w3.org/2000/svg" width="66" height="65" viewBox="0 0 66 65" fill="none">
+                    <path d="M45.3346 22.9629C49.9061 31.4263 43.6038 40.3151 34.5218 47.4011C15.3586 36.3649 17.8456 23.2552 23.8201 21.0669C28.5654 19.2399 32.2017 21.7749 33.9343 25.6267C36.6882 19.1806 43.448 19.4702 45.3346 22.9629Z" fill="#C8CCFF"/>
+                    <path d="M11.741 42.713C11.741 42.713 16.3046 52.3011 10.1975 60.2283C24.8886 55.8193 53.8132 38.6596 45.3346 22.9629C43.3724 19.3303 36.139 19.1626 33.6233 26.4337C30.4786 35.5225 34.5303 34.8114 34.8137 33.383C36.1928 26.4337 31.434 18.1355 23.8201 21.0669C17.6101 23.3414 15.168 37.4153 36.8897 48.6956C47.2271 51.8428 59.3919 45.8155 62.5065 35.8234C65.621 25.8313 60.8001 12.6128 48.6437 6.53462C37.1379 0.781694 26.7365 1.68068 16.4471 6.53463C1.12335 13.7635 -0.517705 30.2693 8.79307 37.9164" stroke="#7557E3" stroke-width="1.10512" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+            </div>
+            <span class="text-wrapper-3">Ai</span>
+        </div>
+        <nav class="social-media" aria-label="Social media links">
+            <a href="#" class="social-media__link" aria-label="WhatsApp">
+                <img class="group" src="https://jampa-landing.web.app/img/group-5694.png" alt="WhatsApp"/>
+            </a>
+            <a href="#" class="social-media__link" aria-label="Facebook">
+                <img class="group" src="https://jampa-landing.web.app/img/group-5777.png" alt="Facebook"/>
+            </a>
+            <a href="#" class="social-media__link" aria-label="Instagram">
+                <img class="group" src="https://jampa-landing.web.app/img/group-5697.png" alt="Instagram"/>
+            </a>
+        </nav>
+        <div class="frame-8"><span class="title-2">www.JampaAI.com</span></div>
+    </div>
+    <div class="frame-9" aria-hidden="true">
+        <svg style="width:100%" width="375" height="139" viewBox="0 0 375 139" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <g clip-path="url(#clip-tut)">
+                <path opacity="0.2" d="M333.11 28.6701C182.663 0.485701 13.2009 62.9287 -52.7246 97.6732V171.779H1088.74V46.4068C1070.52 53.372 1001.57 73.3764 871.528 97.6732C708.982 128.044 521.168 63.9005 333.11 28.6701Z" fill="#989EF5"/>
+                <path opacity="0.2" d="M327.036 16.8234C176.589 -11.361 7.12669 51.082 -58.7988 85.8265V159.932H1082.67V34.5602C1064.45 41.5253 995.491 61.5297 865.454 85.8265C702.908 116.198 515.093 52.0539 327.036 16.8234Z" stroke="#989EF5" stroke-width="0.971875"/>
+                <path opacity="0.2" d="M915.02 28.6701C1065.47 0.485701 1234.93 62.9287 1300.85 97.6732V171.779H-162.06V46.4068C-143.838 53.372 246.565 73.3764 376.601 97.6732C539.148 128.044 726.962 63.9005 915.02 28.6701Z" fill="#989EF5"/>
+            </g>
+            <defs>
+                <clipPath id="clip-tut"><rect width="933" height="139.464" fill="white"/></clipPath>
+            </defs>
+        </svg>
+    </div>
+</footer>
+
+<!-- Video Modal -->
+<div class="vid-modal" id="vid-modal" role="dialog" aria-modal="true" aria-label="סרטון הדרכה">
+    <div class="vid-modal__inner">
+        <button class="vid-modal__close" id="vid-close" aria-label="סגור">✕</button>
+        <div class="vid-modal__ratio">
+            <iframe id="vid-frame" src="" allowfullscreen allow="autoplay; fullscreen; picture-in-picture"></iframe>
+        </div>
+    </div>
+</div>
+
+<script>
+    /* ── Auto-load Vimeo thumbnails via oEmbed ── */
+    document.querySelectorAll('.tut-card[data-vimeo]').forEach(card => {
+        const id = card.dataset.vimeo;
+        const thumb = card.querySelector('.tut-thumb');
+        fetch(`https://vimeo.com/api/oembed.json?url=https://vimeo.com/${id}`)
+            .then(r => r.json())
+            .then(data => {
+                if (data.thumbnail_url) {
+                    const url = data.thumbnail_url.replace(/_\d+x\d+/, '_640x480');
+                    const img = document.createElement('img');
+                    img.src = url;
+                    img.alt = card.dataset.title || '';
+                    img.style.cssText = 'position:absolute;inset:0;width:100%;height:100%;object-fit:cover;';
+                    thumb.insertBefore(img, thumb.firstChild);
+                }
+            })
+            .catch(() => {}); /* fallback: keep purple bg */
+    });
+
+    /* ── Zoom scaling (same as index.html) ── */
+    (function () {
+        function calculateNewScale() {
+            const realWidth = document.documentElement.clientWidth;
+            const zoom = Number((window.outerWidth / 1920).toFixed(3));
+            document.body.style.zoom = realWidth <= 991 ? 1 : zoom;
+        }
+        window.addEventListener("resize", calculateNewScale);
+        calculateNewScale();
+    })();
+
+    /* ── Video Modal ── */
+    const modal   = document.getElementById('vid-modal');
+    const frame   = document.getElementById('vid-frame');
+    const closeBtn = document.getElementById('vid-close');
+
+    function openVideo(vimeoId) {
+        frame.src = `https://player.vimeo.com/video/${vimeoId}?autoplay=1&title=0&byline=0&portrait=0&color=7557e3`;
+        modal.classList.add('open');
+        document.body.style.overflow = 'hidden';
+    }
+
+    function closeVideo() {
+        modal.classList.remove('open');
+        frame.src = '';
+        document.body.style.overflow = '';
+    }
+
+    closeBtn.addEventListener('click', closeVideo);
+    modal.addEventListener('click', e => { if (e.target === modal) closeVideo(); });
+    document.addEventListener('keydown', e => { if (e.key === 'Escape') closeVideo(); });
+
+    document.querySelectorAll('.tut-card[data-vimeo]').forEach(card => {
+        card.style.cursor = 'pointer';
+        card.addEventListener('click', () => {
+            const isPortrait = card.dataset.orientation === 'portrait';
+            const inner = document.querySelector('.vid-modal__inner');
+            inner.classList.toggle('landscape', !isPortrait);
+            openVideo(card.dataset.vimeo);
+        });
+    });
+
+    /* ── Scroll animations ── */
+    const obs = new IntersectionObserver(entries => {
+        entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); obs.unobserve(e.target); } });
+    }, { threshold: 0.08 });
+    document.querySelectorAll('.fade-up').forEach(el => obs.observe(el));
+
+    /* ── Search ── */
+    document.getElementById('tut-search').addEventListener('input', function () {
+        const q = this.value.trim().toLowerCase();
+        document.querySelectorAll('.tut-card').forEach(card => {
+            const match = !q || card.innerText.toLowerCase().includes(q) || (card.dataset.title || '').toLowerCase().includes(q);
+            card.style.display = match ? '' : 'none';
+        });
+        document.querySelectorAll('.tut-category').forEach(cat => {
+            const visible = [...cat.querySelectorAll('.tut-card')].some(c => c.style.display !== 'none');
+            cat.style.display = visible ? '' : 'none';
+        });
+    });
+</script>
+
+</body>
+</html>
