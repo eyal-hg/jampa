@@ -4,14 +4,15 @@
     <meta charset="utf-8"/>
     <meta content="width=device-width, initial-scale=1" name="viewport"/>
     <title>תודה! | JAMPA</title>
-    <link rel="icon" type="image/svg+xml" href="img/favicon.svg"/>
+    <link rel="icon" type="image/x-icon" href="favicon-jampa.ico">
+    <link rel="shortcut icon" href="favicon-jampa.ico"/>
     <link href="https://fonts.googleapis.com/css2?family=Rubik:wght@300;400;500;600;700&display=swap" rel="stylesheet"/>
     <style>
         *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
         body {
             font-family: 'Rubik', Helvetica, sans-serif;
-            background: #f5f5ff;
+            background: #EDEEFF;
             min-height: 100vh;
             display: flex;
             flex-direction: column;
@@ -22,45 +23,74 @@
 
         .card {
             background: #fff;
-            border-radius: 24px;
-            padding: 56px 48px;
-            max-width: 520px;
+            border-radius: 28px;
+            padding: 60px 52px;
+            max-width: 500px;
             width: 100%;
             text-align: center;
-            box-shadow: 0 8px 40px rgba(117, 87, 227, 0.12);
-            animation: fadeUp 0.6s ease both;
+            box-shadow: 0 12px 48px rgba(117, 87, 227, 0.13);
+            animation: fadeUp 0.55s cubic-bezier(.22,.68,0,1.2) both;
         }
 
         @keyframes fadeUp {
-            from { opacity: 0; transform: translateY(24px); }
+            from { opacity: 0; transform: translateY(30px); }
             to   { opacity: 1; transform: translateY(0); }
         }
 
-        .icon {
-            width: 72px;
-            height: 72px;
+        /* Logo */
+        .logo {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 4px;
+            margin-bottom: 36px;
+        }
+        .logo__text { font-size: 24px; font-weight: 700; color: #1a1a2e; }
+        .logo__ai   { font-size: 14px; font-weight: 500; color: #7557E3; margin-top: 6px; }
+
+        /* Check icon */
+        .check {
+            width: 80px;
+            height: 80px;
             background: linear-gradient(135deg, #7557E3, #9b7ff7);
             border-radius: 50%;
             display: flex;
             align-items: center;
             justify-content: center;
             margin: 0 auto 28px;
+            box-shadow: 0 6px 24px rgba(117,87,227,0.3);
+            animation: popIn 0.5s 0.3s cubic-bezier(.22,.68,0,1.4) both;
         }
 
-        .icon svg { width: 36px; height: 36px; }
+        @keyframes popIn {
+            from { opacity: 0; transform: scale(0.5); }
+            to   { opacity: 1; transform: scale(1); }
+        }
+
+        .check svg { width: 38px; height: 38px; }
 
         h1 {
-            font-size: 32px;
+            font-size: 30px;
             font-weight: 700;
             color: #1a1a2e;
             margin-bottom: 14px;
-            letter-spacing: -0.5px;
         }
 
-        p {
+        .subtitle {
             font-size: 17px;
-            line-height: 1.7;
+            line-height: 1.75;
             color: #696971;
+            margin-bottom: 16px;
+        }
+
+        .badge {
+            display: inline-block;
+            background: #EDEEFF;
+            color: #7557E3;
+            font-size: 14px;
+            font-weight: 500;
+            padding: 8px 18px;
+            border-radius: 20px;
             margin-bottom: 36px;
         }
 
@@ -69,44 +99,70 @@
             background: #7557E3;
             color: #fff;
             font-family: 'Rubik', Helvetica, sans-serif;
-            font-size: 17px;
+            font-size: 16px;
             font-weight: 500;
-            padding: 14px 36px;
+            padding: 14px 40px;
             border-radius: 37px;
             text-decoration: none;
-            transition: background 0.2s, transform 0.15s;
+            transition: background 0.2s, transform 0.15s, box-shadow 0.2s;
+            box-shadow: 0 4px 16px rgba(117,87,227,0.25);
         }
 
-        .btn:hover { background: #6b4fd6; transform: translateY(-2px); }
+        .btn:hover {
+            background: #6344d0;
+            transform: translateY(-2px);
+            box-shadow: 0 8px 24px rgba(117,87,227,0.35);
+        }
 
-        .logo {
-            margin-top: 40px;
-            font-size: 22px;
-            font-weight: 700;
-            color: #7557E3;
-            letter-spacing: 1px;
+        .divider {
+            border: none;
+            border-top: 1px solid #f0f0f8;
+            margin: 32px 0 24px;
+        }
+
+        .footer-note {
+            font-size: 13px;
+            color: #aaa;
         }
 
         @media (max-width: 480px) {
-            .card { padding: 40px 24px; }
-            h1 { font-size: 26px; }
+            .card { padding: 44px 24px; }
+            h1 { font-size: 24px; }
+            .subtitle { font-size: 15px; }
         }
     </style>
 </head>
 <body>
     <div class="card">
-        <div class="icon">
-            <svg viewBox="0 0 36 36" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <path d="M7 18L14 25L29 10" stroke="white" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+
+        <!-- Logo -->
+        <div class="logo">
+            <span class="logo__text">Jampa</span>
+            <svg width="28" height="28" viewBox="0 0 39 38" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M26.2502 13.2962C28.8973 18.1969 25.248 23.3437 19.9892 27.4468C8.89312 21.0565 10.3332 13.4655 13.7926 12.1984C16.5403 11.1405 18.6458 12.6084 19.6491 14.8387C21.2437 11.1062 25.1578 11.2739 26.2502 13.2962Z" fill="#C8CCFF"/>
+                <path d="M6.79842 24.7323C6.79842 24.7323 9.44089 30.2841 5.90465 34.8742C14.4113 32.3212 31.1596 22.3852 26.2502 13.2962C25.1141 11.1929 20.9257 11.0958 19.469 15.306C17.6481 20.5687 19.9941 20.157 20.1583 19.3298C20.9568 15.306 18.2013 10.5011 13.7926 12.1984C10.1968 13.5154 8.78274 21.6647 21.3603 28.1964C27.346 30.0187 34.3899 26.5287 36.1933 20.7429C37.9967 14.9572 35.2052 7.30323 28.1663 3.78376C21.504 0.452627 15.4813 0.973171 9.52341 3.78376C0.65044 7.96955 -0.299785 17.5269 5.09146 21.9548" stroke="#7557E3" stroke-linecap="round" stroke-linejoin="round" stroke-width="0.64"/>
+            </svg>
+            <span class="logo__ai">Ai</span>
+        </div>
+
+        <!-- Check -->
+        <div class="check">
+            <svg viewBox="0 0 38 38" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M8 19L15.5 27L30 11" stroke="white" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round"/>
             </svg>
         </div>
 
-        <h1>קיבלנו את הפרטים שלך!</h1>
-        <p>תודה שפנית אלינו.<br/>נציג מ-JAMPA יחזור אליך בהקדם לשיחת התאמה ללא תשלום.</p>
+        <h1>קיבלנו! 🎉</h1>
+        <p class="subtitle">תודה שפנית אלינו.<br/>נציג מ-JAMPA יחזור אליך בהקדם לשיחת התאמה ללא תשלום.</p>
+
+        <div class="badge">⏱ בדרך כלל חוזרים תוך יום עסקים</div>
+
+        <br/>
 
         <a href="https://jampa.ai/" class="btn">חזרה לאתר</a>
 
-        <div class="logo">JAMPA</div>
+        <hr class="divider"/>
+        <p class="footer-note">jampa.ai &nbsp;·&nbsp; info@jampa.ai</p>
     </div>
 </body>
 </html>

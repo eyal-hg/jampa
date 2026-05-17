@@ -44,17 +44,17 @@
         .vid-modal__inner {
             position: relative;
             width: 100%;
-            max-width: 420px; /* portrait */
+            max-width: 520px; /* portrait */
         }
 
         .vid-modal__inner.landscape {
-            max-width: 900px;
+            max-width: 1100px;
         }
 
         .vid-modal__ratio {
             position: relative;
             width: 100%;
-            padding-top: 125%; /* 4:5 portrait (Vimeo default) */
+            padding-top: min(125%, 85vh); /* portrait — never taller than viewport */
             border-radius: 12px;
             overflow: hidden;
             background: #000;
@@ -222,8 +222,8 @@
         .tut-thumb {
             position: relative;
             width: 100%;
-            padding-top: 56.25%; /* landscape default */
-            background: linear-gradient(135deg, #E8EAFF 0%, #D3D6FF 100%);
+            padding-top: 56.25%; /* 16:9 */
+            background: #f0f1ff;
             overflow: hidden;
         }
 
@@ -238,19 +238,19 @@
 
         .tut-thumb__play {
             position: absolute;
-            top: 50%; left: 50%;
-            transform: translate(-50%, -50%);
-            width: 52px; height: 52px;
+            bottom: 22px; left: 10px;
+            width: 40px; height: 40px;
             background: var(--purple-01);
             border-radius: 50%;
             display: flex; align-items: center; justify-content: center;
             pointer-events: none;
             transition: transform 0.2s;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.25);
         }
 
-        .tut-card:hover .tut-thumb__play { transform: translate(-50%, -50%) scale(1.1); }
+        .tut-card:hover .tut-thumb__play { transform: scale(1.12); }
 
-        .tut-thumb__play svg { width: 22px; height: 22px; margin-right: -3px; }
+        .tut-thumb__play svg { width: 18px; height: 18px; margin-right: -2px; }
 
         .tut-thumb__duration {
             position: absolute;
@@ -264,24 +264,8 @@
             font-weight: 500;
         }
 
-        /* Info */
-        .tut-card__info { padding: 16px 18px 18px; }
-
-        .tut-card__title {
-            font-family: 'Rubik', Helvetica;
-            font-size: 16px;
-            font-weight: 600;
-            color: var(--text);
-            margin-bottom: 6px;
-            line-height: 1.4;
-        }
-
-        .tut-card__desc {
-            font-family: 'Rubik', Helvetica;
-            font-size: 14px;
-            color: var(--grey);
-            line-height: 1.6;
-        }
+        /* Info — hidden, title is inside the image */
+        .tut-card__info { display: none; }
 
         /* Scroll animation */
         .fade-up {
@@ -293,8 +277,51 @@
 
         /* Responsive */
         @media (max-width: 600px) {
-            .tut-grid { grid-template-columns: 1fr; }
+            .tut-grid { grid-template-columns: 1fr 1fr; }
             .tut-hero { padding: 48px 20px 64px; }
+        }
+
+        /* Mobile modal — full screen */
+        @media (max-width: 768px) {
+            .vid-modal {
+                padding: 0;
+                align-items: stretch;
+                justify-content: stretch;
+            }
+            .vid-modal__inner {
+                max-width: 100% !important;
+                width: 100%;
+                height: 100%;
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+                background: #000;
+            }
+            .vid-modal__ratio {
+                border-radius: 0;
+                height: 100%;
+                padding-top: 0;
+                flex: 1;
+            }
+            .vid-modal__ratio iframe {
+                position: relative;
+                width: 100%;
+                height: 100%;
+            }
+            .vid-modal__close {
+                position: fixed;
+                top: 16px;
+                left: 16px;
+                z-index: 10;
+                background: rgba(0,0,0,0.5);
+                border-radius: 50%;
+                width: 40px;
+                height: 40px;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                font-size: 22px;
+            }
         }
     </style>
 </head>
@@ -349,178 +376,81 @@
 <!-- Main -->
 <main class="tut-main">
 
-    <!-- התחלה מהירה -->
-    <section class="tut-category fade-up" data-category="התחלה מהירה">
+    <section class="tut-category fade-up">
         <div class="tut-category__header">
-            <div class="tut-category__icon">🚀</div>
-            <h2 class="tut-category__title">התחלה מהירה</h2>
-            <span class="tut-category__count">3 סרטונים</span>
+            <div class="tut-category__icon">🎬</div>
+            <h2 class="tut-category__title">כל הסרטונים</h2>
+            <span class="tut-category__count" id="vid-count">7 סרטונים</span>
         </div>
         <div class="tut-grid">
 
-            <div class="tut-card" data-title="הכרת הממשק">
+            <div class="tut-card" data-vimeo="1192919127">
                 <div class="tut-thumb">
-                    <!-- כשיש Vimeo ID: <iframe src="https://player.vimeo.com/video/VIMEO_ID?title=0&byline=0&portrait=0&color=7557E3" allowfullscreen></iframe> -->
-                    <div class="tut-thumb__play">
-                        <svg viewBox="0 0 24 24" fill="white"><path d="M8 5v14l11-7z"/></svg>
-                    </div>
-                    <span class="tut-thumb__duration">2:30</span>
+                    <img src="img/preview_04_summary_send.png" alt="סיום ושליחת סיכום" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center;">
+                    <div class="tut-thumb__play"><svg viewBox="0 0 24 24" fill="white"><path d="M8 5v14l11-7z"/></svg></div>
                 </div>
                 <div class="tut-card__info">
-                    <h3 class="tut-card__title">הכרת הממשק</h3>
-                    <p class="tut-card__desc">סיור מהיר בכל חלקי המערכת — איפה כל דבר ואיך מתחילים</p>
+                    <h3 class="tut-card__title">סיום ושליחת סיכום</h3>
                 </div>
             </div>
 
-            <div class="tut-card" data-title="הוספת מטפל ראשון">
+            <div class="tut-card" data-vimeo="1192919142">
                 <div class="tut-thumb">
-                    <div class="tut-thumb__play">
-                        <svg viewBox="0 0 24 24" fill="white"><path d="M8 5v14l11-7z"/></svg>
-                    </div>
-                    <span class="tut-thumb__duration">1:45</span>
-                </div>
-                <div class="tut-card__info">
-                    <h3 class="tut-card__title">הוספת מטפל</h3>
-                    <p class="tut-card__desc">איך להוסיף פרופיל מטפל, להגדיר פרטים ולחבר לחשבון</p>
-                </div>
-            </div>
-
-            <div class="tut-card" data-title="הוספת מטופל חדש" data-vimeo="1188336609" data-orientation="portrait">
-                <div class="tut-thumb">
-                    <div class="tut-thumb__play">
-                        <svg viewBox="0 0 24 24" fill="white"><path d="M8 5v14l11-7z"/></svg>
-                    </div>
-                </div>
-                <div class="tut-card__info">
-                    <h3 class="tut-card__title">הוספת מטופל חדש</h3>
-                    <p class="tut-card__desc">יצירת פרופיל מטופל, מטרות טיפוליות ומידע רקע</p>
-                </div>
-            </div>
-
-        </div>
-    </section>
-
-    <!-- הקלטה ותיעוד -->
-    <section class="tut-category fade-up" data-category="הקלטה ותיעוד פגישות">
-        <div class="tut-category__header">
-            <div class="tut-category__icon">🎙️</div>
-            <h2 class="tut-category__title">הקלטה ותיעוד פגישות</h2>
-            <span class="tut-category__count">3 סרטונים</span>
-        </div>
-        <div class="tut-grid">
-
-            <div class="tut-card" data-title="הקלטת פגישה">
-                <div class="tut-thumb">
-                    <div class="tut-thumb__play">
-                        <svg viewBox="0 0 24 24" fill="white"><path d="M8 5v14l11-7z"/></svg>
-                    </div>
-                    <span class="tut-thumb__duration">3:00</span>
+                    <img src="img/preview_03_record_meeting.png" alt="הקלטת פגישה" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center;">
+                    <div class="tut-thumb__play"><svg viewBox="0 0 24 24" fill="white"><path d="M8 5v14l11-7z"/></svg></div>
                 </div>
                 <div class="tut-card__info">
                     <h3 class="tut-card__title">הקלטת פגישה</h3>
-                    <p class="tut-card__desc">איך להפעיל הקלטה, מה לעשות בזמן הפגישה ואיך לסיים</p>
                 </div>
             </div>
 
-            <div class="tut-card" data-title="עריכת סיכום פגישה">
+            <div class="tut-card" data-vimeo="1192919163">
                 <div class="tut-thumb">
-                    <div class="tut-thumb__play">
-                        <svg viewBox="0 0 24 24" fill="white"><path d="M8 5v14l11-7z"/></svg>
-                    </div>
-                    <span class="tut-thumb__duration">2:20</span>
+                    <img src="img/preview_02_add_patient.png" alt="הוספה ועריכת לקוח" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center;">
+                    <div class="tut-thumb__play"><svg viewBox="0 0 24 24" fill="white"><path d="M8 5v14l11-7z"/></svg></div>
                 </div>
                 <div class="tut-card__info">
-                    <h3 class="tut-card__title">עריכת סיכום פגישה</h3>
-                    <p class="tut-card__desc">סקירה, עריכה ואישור הסיכום האוטומטי לפני שליחה</p>
+                    <h3 class="tut-card__title">הוספה ועריכת לקוח</h3>
                 </div>
             </div>
 
-            <div class="tut-card" data-title="שליחת סיכום למטופל">
+            <div class="tut-card" data-vimeo="1192919169">
                 <div class="tut-thumb">
-                    <div class="tut-thumb__play">
-                        <svg viewBox="0 0 24 24" fill="white"><path d="M8 5v14l11-7z"/></svg>
-                    </div>
-                    <span class="tut-thumb__duration">1:30</span>
+                    <img src="img/preview_01_navigation.png" alt="ניווט באפליקציה" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center;">
+                    <div class="tut-thumb__play"><svg viewBox="0 0 24 24" fill="white"><path d="M8 5v14l11-7z"/></svg></div>
                 </div>
                 <div class="tut-card__info">
-                    <h3 class="tut-card__title">שליחת סיכום למטופל</h3>
-                    <p class="tut-card__desc">איך שולחים סיכום אישי למטופל ישירות בוואטסאפ בקליק</p>
+                    <h3 class="tut-card__title">ניווט באפליקציה</h3>
                 </div>
             </div>
 
-        </div>
-    </section>
-
-    <!-- הכנה לפגישה -->
-    <section class="tut-category fade-up" data-category="הכנה לפגישה">
-        <div class="tut-category__header">
-            <div class="tut-category__icon">📋</div>
-            <h2 class="tut-category__title">הכנה לפגישה</h2>
-            <span class="tut-category__count">2 סרטונים</span>
-        </div>
-        <div class="tut-grid">
-
-            <div class="tut-card" data-title="בריף הכנה חכם">
+            <div class="tut-card" data-vimeo="1192919130">
                 <div class="tut-thumb">
-                    <div class="tut-thumb__play">
-                        <svg viewBox="0 0 24 24" fill="white"><path d="M8 5v14l11-7z"/></svg>
-                    </div>
-                    <span class="tut-thumb__duration">2:00</span>
+                    <img src="img/preview_05_chat.png" alt="צ'אט AI" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center;">
+                    <div class="tut-thumb__play"><svg viewBox="0 0 24 24" fill="white"><path d="M8 5v14l11-7z"/></svg></div>
                 </div>
                 <div class="tut-card__info">
-                    <h3 class="tut-card__title">בריף הכנה חכם</h3>
-                    <p class="tut-card__desc">איך קוראים את הבריף לפני פגישה ומה כל חלק אומר</p>
+                    <h3 class="tut-card__title">צ'אט AI</h3>
                 </div>
             </div>
 
-            <div class="tut-card" data-title="סופרוויזיון אישי">
+            <div class="tut-card" data-vimeo="1192919128">
                 <div class="tut-thumb">
-                    <div class="tut-thumb__play">
-                        <svg viewBox="0 0 24 24" fill="white"><path d="M8 5v14l11-7z"/></svg>
-                    </div>
-                    <span class="tut-thumb__duration">2:50</span>
+                    <img src="img/preview_06_meeting_prep.png" alt="הכנה לפגישה" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center;">
+                    <div class="tut-thumb__play"><svg viewBox="0 0 24 24" fill="white"><path d="M8 5v14l11-7z"/></svg></div>
                 </div>
                 <div class="tut-card__info">
-                    <h3 class="tut-card__title">סופרוויזיון אישי</h3>
-                    <p class="tut-card__desc">איך לקרוא את ניתוח הפגישה ולהפיק ממנו תובנות מקצועיות</p>
+                    <h3 class="tut-card__title">הכנה לפגישה</h3>
                 </div>
             </div>
 
-        </div>
-    </section>
-
-    <!-- מעקב ומשימות -->
-    <section class="tut-category fade-up" data-category="מעקב ומשימות">
-        <div class="tut-category__header">
-            <div class="tut-category__icon">✅</div>
-            <h2 class="tut-category__title">מעקב ומשימות</h2>
-            <span class="tut-category__count">2 סרטונים</span>
-        </div>
-        <div class="tut-grid">
-
-            <div class="tut-card" data-title="הגדרת משימות למטופל">
+            <div class="tut-card" data-vimeo="1192919129">
                 <div class="tut-thumb">
-                    <div class="tut-thumb__play">
-                        <svg viewBox="0 0 24 24" fill="white"><path d="M8 5v14l11-7z"/></svg>
-                    </div>
-                    <span class="tut-thumb__duration">2:15</span>
+                    <img src="img/preview_07_reinforcements.png" alt="מערכת חיזוקים" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center;">
+                    <div class="tut-thumb__play"><svg viewBox="0 0 24 24" fill="white"><path d="M8 5v14l11-7z"/></svg></div>
                 </div>
                 <div class="tut-card__info">
-                    <h3 class="tut-card__title">הגדרת משימות למטופל</h3>
-                    <p class="tut-card__desc">איך מגדירים משימות, תדירות תזכורות ומינון הפניות</p>
-                </div>
-            </div>
-
-            <div class="tut-card" data-title="מעקב התקדמות מטופל">
-                <div class="tut-thumb">
-                    <div class="tut-thumb__play">
-                        <svg viewBox="0 0 24 24" fill="white"><path d="M8 5v14l11-7z"/></svg>
-                    </div>
-                    <span class="tut-thumb__duration">1:55</span>
-                </div>
-                <div class="tut-card__info">
-                    <h3 class="tut-card__title">מעקב התקדמות מטופל</h3>
-                    <p class="tut-card__desc">קריאת גרף ההתקדמות וזיהוי מגמות לאורך הטיפול</p>
+                    <h3 class="tut-card__title">מערכת חיזוקים</h3>
                 </div>
             </div>
 
@@ -580,23 +510,31 @@
 </div>
 
 <script>
-    /* ── Auto-load Vimeo thumbnails via oEmbed ── */
+    /* ── Auto-load Vimeo title + duration + orientation via oEmbed ── */
     document.querySelectorAll('.tut-card[data-vimeo]').forEach(card => {
         const id = card.dataset.vimeo;
         const thumb = card.querySelector('.tut-thumb');
+        const titleEl = card.querySelector('.tut-card__title');
+
         fetch(`https://vimeo.com/api/oembed.json?url=https://vimeo.com/${id}`)
             .then(r => r.json())
             .then(data => {
-                if (data.thumbnail_url) {
-                    const url = data.thumbnail_url.replace(/_\d+x\d+/, '_640x480');
-                    const img = document.createElement('img');
-                    img.src = url;
-                    img.alt = card.dataset.title || '';
-                    img.style.cssText = 'position:absolute;inset:0;width:100%;height:100%;object-fit:cover;';
-                    thumb.insertBefore(img, thumb.firstChild);
+                /* Orientation — store on card for modal */
+                if (data.width && data.height) {
+                    card.dataset.orientation = data.height > data.width ? 'portrait' : 'landscape';
+                }
+
+                /* Duration badge */
+                if (data.duration) {
+                    const m = Math.floor(data.duration / 60);
+                    const s = String(data.duration % 60).padStart(2, '0');
+                    const badge = document.createElement('span');
+                    badge.className = 'tut-thumb__duration';
+                    badge.textContent = `${m}:${s}`;
+                    thumb.appendChild(badge);
                 }
             })
-            .catch(() => {}); /* fallback: keep purple bg */
+            .catch(() => {});
     });
 
     /* ── Zoom scaling (same as index.html) ── */

@@ -26,7 +26,7 @@
                 <div class="title-wrapper"><a class="title" href="#contact">צור קשר</a></div>
                 <div class="title-wrapper"><a class="title" href="#benefits">למה כדאי?</a></div>
                 <div class="title-wrapper"><a class="title" href="#news">אז מה חדש?</a></div>
-                <!-- <div class="title-wrapper"><a class="title" href="tutorials.html">הדרכות</a></div> -->
+                <div class="title-wrapper"><a class="title" href="tutorials.html">הדרכות</a></div>
             </nav>
             <div class="frame-5">
                 <div class="div-wrapper"><span class="text-wrapper-2">Jampa</span></div>
@@ -1392,6 +1392,41 @@
 
 
 <script>
+    /* ── Form submission → Leads API + Formspree ── */
+    document.querySelectorAll('form[action*="formspree"]').forEach(function(form) {
+        form.addEventListener('submit', function(e) {
+            e.preventDefault();
+
+            var data = new FormData(form);
+            var name  = data.get('שם מלא')  || '';
+            var phone = data.get('טלפון')    || '';
+            var email = data.get('דוא״ל')   || '';
+
+            /* 1. שליחה ל-Leads API (fire & forget) */
+            fetch('https://hk-jampa-dot-hk-prod-462507.oa.r.appspot.com/api/leads', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({
+                    name: name,
+                    phone: phone,
+                    email: email,
+                    source: { channel: 'אתר', form: 'טופס יצירת קשר' },
+                    stageKey: 'new',
+                    notes: 'נוצר מאתר jampa.ai'
+                })
+            }).catch(function(){});
+
+            /* 2. שליחה ל-Formspree (מייל) + הפניה לעמוד תודה */
+            fetch(form.action, {
+                method: 'POST',
+                body: data,
+                headers: { 'Accept': 'application/json' }
+            }).finally(function() {
+                window.location.href = 'https://jampa.ai/thank-you.html';
+            });
+        });
+    });
+
     /* ── Read-more expand/collapse for mobile cards ── */
     document.addEventListener("click", function (e) {
         const btn = e.target.closest(".read-more-btn");
