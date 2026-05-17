@@ -1406,7 +1406,7 @@
             var email = data.get('email') || '';
 
             /* 1. שליחה ל-Leads API (fire & forget) */
-            fetch('https://hk-jampa-dot-hk-stage-462507.oa.r.appspot.com/api/leads', {
+            fetch('https://hk-jampa-dot-hk-prod-462507.oa.r.appspot.com/api/leads', {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify({
