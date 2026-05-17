@@ -468,7 +468,7 @@
                     <div class="text-field">
                         <label for="fullname" class="text"></label>
                         <div class="frame-31">
-                            <input type="text" id="fullname" name="שם מלא" class="title-28" placeholder="שם מלא"
+                            <input type="text" id="fullname" name="name" class="title-28" placeholder="שם מלא"
                                    required/>
                         </div>
                     </div>
@@ -478,7 +478,7 @@
                             <input
                                     type="tel"
                                     id="phone"
-                                    name="טלפון"
+                                    name="phone"
                                     class="title-28"
                                     placeholder="טלפון"
                                     required
@@ -491,7 +491,7 @@
                             <input
                                     type="email"
                                     id="email-desktop"
-                                    name="דוא״ל"
+                                    name="email"
                                     class="title-28"
                                     placeholder="דוא״ל"
                                     required
@@ -1167,7 +1167,7 @@
                         <input
                                 type="text"
                                 id="fullname"
-                                name="שם מלא"
+                                name="name"
                                 class="title-22"
                                 placeholder="שם מלא"
                                 required
@@ -1181,7 +1181,7 @@
                         <input
                                 type="tel"
                                 id="phone"
-                                name="טלפון"
+                                name="phone"
                                 class="title-22"
                                 placeholder="טלפון"
                                 required
@@ -1195,7 +1195,7 @@
                         <input
                                 type="email"
                                 id="email-mobile"
-                                name="דוא״ל"
+                                name="email"
                                 class="title-22"
                                 placeholder="דוא״ל"
                                 required
@@ -1401,9 +1401,9 @@
             e.preventDefault();
 
             var data = new FormData(form);
-            var name  = data.get('שם מלא')  || '';
-            var phone = data.get('טלפון')    || '';
-            var email = data.get('דוא״ל')   || '';
+            var name  = data.get('name')  || '';
+            var phone = data.get('phone') || '';
+            var email = data.get('email') || '';
 
             /* 1. שליחה ל-Leads API (fire & forget) */
             fetch('https://hk-jampa-dot-hk-stage-462507.oa.r.appspot.com/api/leads', {
