@@ -593,6 +593,10 @@
         display: none !important;
     }
 
+    .desktop-hidden {
+        display: block !important;
+    }
+
     * {
         -webkit-font-smoothing: antialiased;
         box-sizing: border-box;
@@ -2830,6 +2834,10 @@
 
 
 @media (min-width: 992px) {
+
+    .desktop-hidden {
+        display: none !important;
+    }
 
     body {
         margin: 0;
