@@ -1424,6 +1424,12 @@
                 method: 'POST',
                 body: data,
                 headers: { 'Accept': 'application/json' }
+            }).then(function(res) {
+                return res.json().then(function(json) {
+                    console.log('Web3Forms status:', res.status, json);
+                });
+            }).catch(function(err) {
+                console.error('Web3Forms error:', err);
             }).finally(function() {
                 window.location.href = 'https://jampa.ai/thank-you.html';
             });
