@@ -1,0 +1,472 @@
+<!doctype html>
+<html dir="rtl" lang="he">
+<head>
+    <meta charset="utf-8"/>
+    <meta content="width=device-width, initial-scale=1" name="viewport"/>
+    <title>H Group — קבוצת טכנולוגיה</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com"/>
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+    <link href="https://fonts.googleapis.com/css2?family=Rubik:wght@300;400;500;600;700&display=swap" rel="stylesheet"/>
+    <style>
+        *, *::before, *::after {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        :root {
+            --purple: #7557E3;
+            --purple-light: #9B7FF5;
+            --dark: #0d0d1a;
+            --dark-card: #13131f;
+            --dark-border: #1e1e30;
+            --text-primary: #1a1a2e;
+            --text-secondary: #4a4a6a;
+            --text-muted: #8888aa;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Rubik', Helvetica, sans-serif;
+            direction: rtl;
+            background: #fff;
+            color: var(--text-primary);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        /* ── HEADER ── */
+        .site-header {
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            background: rgba(13, 13, 26, 0.96);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border-bottom: 1px solid var(--dark-border);
+            height: 68px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .site-header img {
+            height: 48px;
+            width: auto;
+            object-fit: contain;
+        }
+
+        /* ── HERO ── */
+        .hero {
+            background: var(--dark);
+            min-height: 540px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            padding: 80px 24px 100px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background:
+                radial-gradient(ellipse 900px 600px at 50% 40%, rgba(117, 87, 227, 0.18) 0%, transparent 70%),
+                radial-gradient(ellipse 400px 400px at 80% 80%, rgba(117, 87, 227, 0.08) 0%, transparent 60%);
+            pointer-events: none;
+        }
+
+        .hero-logo {
+            height: 80px;
+            width: auto;
+            object-fit: contain;
+            margin-bottom: 36px;
+            position: relative;
+            z-index: 1;
+            opacity: 0;
+            animation: fadeUp 0.7s ease forwards 0.1s;
+        }
+
+        .hero-tagline {
+            font-size: clamp(26px, 5vw, 42px);
+            font-weight: 700;
+            color: #ffffff;
+            line-height: 1.3;
+            margin-bottom: 20px;
+            position: relative;
+            z-index: 1;
+            opacity: 0;
+            animation: fadeUp 0.7s ease forwards 0.3s;
+        }
+
+        .hero-tagline span {
+            color: var(--purple-light);
+        }
+
+        .hero-subtitle {
+            font-size: clamp(15px, 2.5vw, 19px);
+            font-weight: 400;
+            color: rgba(255, 255, 255, 0.6);
+            max-width: 560px;
+            position: relative;
+            z-index: 1;
+            opacity: 0;
+            animation: fadeUp 0.7s ease forwards 0.5s;
+        }
+
+        /* ── ABOUT SECTION ── */
+        .about {
+            background: #ffffff;
+            padding: 96px 24px;
+            text-align: center;
+        }
+
+        .about-inner {
+            max-width: 720px;
+            margin: 0 auto;
+            opacity: 0;
+            animation: fadeUp 0.7s ease forwards 0.2s;
+        }
+
+        .section-label {
+            display: inline-block;
+            background: #ede9ff;
+            color: var(--purple);
+            font-size: 13px;
+            font-weight: 600;
+            letter-spacing: 0.06em;
+            padding: 6px 18px;
+            border-radius: 100px;
+            margin-bottom: 28px;
+            text-transform: uppercase;
+        }
+
+        .about-title {
+            font-size: clamp(22px, 3.5vw, 32px);
+            font-weight: 700;
+            color: var(--text-primary);
+            margin-bottom: 24px;
+            line-height: 1.35;
+        }
+
+        .about-title span {
+            color: var(--purple);
+        }
+
+        .about-body {
+            font-size: clamp(15px, 2vw, 17px);
+            font-weight: 400;
+            color: var(--text-secondary);
+            line-height: 1.8;
+        }
+
+        /* ── COMPANIES SECTION ── */
+        .companies {
+            background: #f7f6ff;
+            padding: 96px 24px;
+        }
+
+        .companies-inner {
+            max-width: 960px;
+            margin: 0 auto;
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 56px;
+        }
+
+        .section-title {
+            font-size: clamp(24px, 4vw, 36px);
+            font-weight: 700;
+            color: var(--text-primary);
+            margin-top: 12px;
+        }
+
+        .cards-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 28px;
+        }
+
+        .company-card {
+            background: #ffffff;
+            border-radius: 20px;
+            padding: 40px 36px;
+            box-shadow: 0 4px 32px rgba(117, 87, 227, 0.08), 0 1px 4px rgba(0,0,0,0.06);
+            border: 1.5px solid #ede9ff;
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+            transition: transform 0.25s ease, box-shadow 0.25s ease;
+            opacity: 0;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .company-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            right: 0;
+            left: 0;
+            height: 3px;
+            background: linear-gradient(90deg, var(--purple), var(--purple-light));
+            border-radius: 20px 20px 0 0;
+        }
+
+        .company-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 12px 48px rgba(117, 87, 227, 0.16), 0 4px 12px rgba(0,0,0,0.08);
+        }
+
+        .company-card.animate-1 {
+            animation: fadeUp 0.7s ease forwards 0.1s;
+        }
+
+        .company-card.animate-2 {
+            animation: fadeUp 0.7s ease forwards 0.3s;
+        }
+
+        .card-icon {
+            width: 64px;
+            height: 64px;
+            border-radius: 16px;
+            background: linear-gradient(135deg, #7557E3 0%, #9B7FF5 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+        }
+
+        .card-icon-text {
+            font-size: 22px;
+            font-weight: 700;
+            color: #fff;
+            letter-spacing: -0.5px;
+        }
+
+        .card-icon-svg {
+            width: 64px;
+            height: 64px;
+            border-radius: 16px;
+            background: linear-gradient(135deg, #f0edff 0%, #e8e2ff 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+        }
+
+        .card-content {
+            flex: 1;
+        }
+
+        .card-company-name {
+            font-size: 22px;
+            font-weight: 700;
+            color: var(--text-primary);
+            margin-bottom: 4px;
+        }
+
+        .card-subtitle {
+            font-size: 13px;
+            font-weight: 500;
+            color: var(--purple);
+            background: #ede9ff;
+            display: inline-block;
+            padding: 3px 12px;
+            border-radius: 100px;
+            margin-bottom: 16px;
+        }
+
+        .card-description {
+            font-size: 15px;
+            color: var(--text-secondary);
+            line-height: 1.75;
+        }
+
+        .card-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 15px;
+            font-weight: 600;
+            color: var(--purple);
+            text-decoration: none;
+            border: 1.5px solid var(--purple);
+            padding: 10px 22px;
+            border-radius: 100px;
+            transition: background 0.2s ease, color 0.2s ease;
+            align-self: flex-start;
+        }
+
+        .card-link:hover {
+            background: var(--purple);
+            color: #fff;
+        }
+
+        /* ── FOOTER STRIP ── */
+        .footer-strip {
+            background: var(--dark);
+            padding: 48px 24px;
+            text-align: center;
+            border-top: 1px solid var(--dark-border);
+        }
+
+        .footer-contact {
+            font-size: 16px;
+            color: rgba(255,255,255,0.7);
+            margin-bottom: 12px;
+        }
+
+        .footer-contact a {
+            color: var(--purple-light);
+            text-decoration: none;
+        }
+
+        .footer-contact a:hover {
+            text-decoration: underline;
+        }
+
+        .footer-copy {
+            font-size: 13px;
+            color: rgba(255,255,255,0.35);
+        }
+
+        /* ── ANIMATION ── */
+        @keyframes fadeUp {
+            from {
+                opacity: 0;
+                transform: translateY(24px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* ── RESPONSIVE ── */
+        @media (max-width: 680px) {
+            .cards-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .hero {
+                min-height: 420px;
+                padding: 60px 20px 72px;
+            }
+
+            .hero-logo {
+                height: 60px;
+                margin-bottom: 28px;
+            }
+
+            .about, .companies {
+                padding: 64px 20px;
+            }
+
+            .company-card {
+                padding: 32px 24px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+<!-- HEADER -->
+<header class="site-header">
+    <img src="img/h-group logo.png" alt="H Group" height="48"/>
+</header>
+
+<!-- HERO -->
+<section class="hero">
+    <img src="img/h-group logo.png" alt="H Group" class="hero-logo"/>
+    <h1 class="hero-tagline">קבוצת <span>H</span> — בונים את עתיד הטכנולוגיה הישראלית</h1>
+    <p class="hero-subtitle">קבוצה טכנולוגית המפתחת פתרונות AI לעסקים ולמטפלים</p>
+</section>
+
+<!-- ABOUT -->
+<section class="about">
+    <div class="about-inner">
+        <span class="section-label">על הקבוצה</span>
+        <h2 class="about-title">אייל חזות — <span>מייסד ומנכ״ל</span></h2>
+        <p class="about-body">
+            אייל חזות הוא יזם סידרתי ישראלי עם ניסיון של מעל עשור בבניית חברות טכנולוגיה.
+            מייסד ביזיבוקס, ועומד בראש קבוצת H — מיזם טכנולוגי שמטרתו לשנות את הדרך שבה
+            עסקים ומטפלים מנהלים את עצמם באמצעות AI.
+        </p>
+    </div>
+</section>
+
+<!-- COMPANIES -->
+<section class="companies">
+    <div class="companies-inner">
+        <div class="section-header">
+            <span class="section-label">הפורטפוליו</span>
+            <h2 class="section-title">החברות בקבוצה</h2>
+        </div>
+
+        <div class="cards-grid">
+
+            <!-- HK CARD -->
+            <div class="company-card animate-1">
+                <div class="card-icon" style="background:transparent;border:none;box-shadow:none;padding:0;">
+                    <img src="img/hk logo.png" alt="HK Money AI" style="height:60px;object-fit:contain;">
+                </div>
+                <div class="card-content">
+                    <h3 class="card-company-name">HK Money AI</h3>
+                    <span class="card-subtitle">ניהול תזרים פיננסי לעסקים</span>
+                    <p class="card-description">
+                        פלטפורמת AI היברידית המשלבת בינה מלאכותית עם ניהול אנושי מקצועי — עדכוני תזרים יומיים,
+                        תחזיות פיננסיות וליווי אישי דרך WhatsApp.
+                    </p>
+                </div>
+                <a href="https://hak.co.il" target="_blank" rel="noopener noreferrer" class="card-link">
+                    לאתר ←
+                </a>
+            </div>
+
+            <!-- JAMPA CARD -->
+            <div class="company-card animate-2">
+                <div class="card-icon-svg">
+                    <svg fill="none" height="38" viewBox="0 0 39 38" width="39" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M26.2502 13.2962C28.8973 18.1969 25.248 23.3437 19.9892 27.4468C8.89312 21.0565 10.3332 13.4655 13.7926 12.1984C16.5403 11.1405 18.6458 12.6084 19.6491 14.8387C21.2437 11.1062 25.1578 11.2739 26.2502 13.2962Z"
+                              fill="#C8CCFF"/>
+                        <path d="M6.79842 24.7323C6.79842 24.7323 9.44089 30.2841 5.90465 34.8742C14.4113 32.3212 31.1596 22.3852 26.2502 13.2962C25.1141 11.1929 20.9257 11.0958 19.469 15.306C17.6481 20.5687 19.9941 20.157 20.1583 19.3298C20.9568 15.306 18.2013 10.5011 13.7926 12.1984C10.1968 13.5154 8.78274 21.6647 21.3603 28.1964C27.346 30.0187 34.3899 26.5287 36.1933 20.7429C37.9967 14.9572 35.2052 7.30323 28.1663 3.78376C21.504 0.452627 15.4813 0.973171 9.52341 3.78376C0.65044 7.96955 -0.299785 17.5269 5.09146 21.9548"
+                              stroke="#7557E3" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.2"/>
+                    </svg>
+                </div>
+                <div class="card-content">
+                    <h3 class="card-company-name">JAMPA AI</h3>
+                    <span class="card-subtitle">פלטפורמת AI למטפלים</span>
+                    <p class="card-description">
+                        מערכת AI לתיעוד פגישות טיפוליות, כתיבת סיכומים אוטומטית וניהול קליניקה —
+                        חוסכת למטפלים שעות עבודה בכל שבוע.
+                    </p>
+                </div>
+                <a href="https://jampa.ai" target="_blank" rel="noopener noreferrer" class="card-link">
+                    לאתר ←
+                </a>
+            </div>
+
+        </div>
+    </div>
+</section>
+
+<!-- FOOTER STRIP -->
+<footer class="footer-strip">
+    <p class="footer-contact">
+        ליצירת קשר: <a href="mailto:info@jampa.ai">info@jampa.ai</a>
+    </p>
+    <p class="footer-copy">© 2026 H Group. כל הזכויות שמורות.</p>
+</footer>
+
+</body>
+</html>
