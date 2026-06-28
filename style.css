@@ -5991,9 +5991,27 @@
 
 .pricing-price-wrap {
     display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    gap: 2px;
+    direction: rtl;
+}
+
+.pricing-price-row {
+    display: flex;
     align-items: baseline;
     gap: 6px;
-    direction: rtl;
+}
+
+.pricing-vat {
+    font-family: "Rubik", Helvetica;
+    font-size: 13px;
+    font-weight: 400;
+    color: var(--grey-text);
+}
+
+.pricing-card--featured .pricing-vat {
+    color: rgba(255,255,255,0.65);
 }
 
 .pricing-currency {
