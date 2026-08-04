@@ -78,11 +78,17 @@ src="https://www.facebook.com/tr?id=1054981510824223&ev=PageView&noscript=1"
                 <div style="background:#efefef;border-radius:12px;padding:12px 16px;text-align:center;">
                     <p style="font-family:'Rubik',Helvetica;font-size:20px;font-weight:400;color:#696971;margin:0;direction:rtl;">מוצפן ומאובטח &nbsp;·&nbsp; אקו-סיסטם שלם לקליניקה &nbsp;·&nbsp; הכל בפיקוח והנהגה שלכם</p>
                 </div>
-                <div class="div">
-                    <a href="#contact" class="buttons" aria-label="לבדיקת התאמה">
-                        <span class="title-2">לבדיקת התאמה</span>
-                    </a>
-                </div>
+                <form action="https://api.web3forms.com/submit" method="POST" style="margin-top:12px;width:100%;max-width:560px;">
+                    <input type="hidden" name="access_key" value="a7ad0565-dc76-455c-84a5-2ab398c0cc5f">
+                    <input type="hidden" name="subject" value="פנייה חדשה מ-Hero (אתר JAMPA)">
+                    <input type="hidden" name="botcheck" value="">
+                    <div style="display:flex;gap:10px;flex-wrap:wrap;direction:rtl;">
+                        <input type="text" name="name" placeholder="שם מלא" required aria-label="שם מלא" style="flex:1;min-width:160px;height:54px;border:1.5px solid #d7d9f5;border-radius:12px;padding:0 16px;font-family:'Rubik',Helvetica;font-size:16px;direction:rtl;outline:none;background:#fff;"/>
+                        <input type="tel" name="phone" placeholder="טלפון" required aria-label="טלפון" style="flex:1;min-width:160px;height:54px;border:1.5px solid #d7d9f5;border-radius:12px;padding:0 16px;font-family:'Rubik',Helvetica;font-size:16px;direction:rtl;outline:none;background:#fff;"/>
+                        <button type="submit" style="height:54px;background:#7557E3;color:#fff;border:none;border-radius:12px;padding:0 32px;font-family:'Rubik',Helvetica;font-size:17px;font-weight:600;cursor:pointer;white-space:nowrap;">לבדיקת התאמה</button>
+                    </div>
+                    <p style="font-family:'Rubik',Helvetica;font-size:14px;color:#8888aa;margin:10px 0 0 0;direction:rtl;text-align:center;">נחזור אליכם עוד היום · ללא התחייבות</p>
+                </form>
             </div>
             <div class="vector-wrapper" aria-hidden="true"><img class="vector" src="https://jampa-landing.web.app/img/vector-1-1.svg" alt=""/></div>
             <div class="img-wrapper" aria-hidden="true"><img class="img" src="https://jampa-landing.web.app/img/vector-1-2.svg" alt=""/></div>
@@ -501,19 +507,6 @@ src="https://www.facebook.com/tr?id=1054981510824223&ev=PageView&noscript=1"
                             />
                         </div>
                     </div>
-                    <div class="text-field-3">
-                        <label for="email-desktop" class="text"></label>
-                        <div class="frame-31">
-                            <input
-                                    type="email"
-                                    id="email-desktop"
-                                    name="email"
-                                    class="title-28"
-                                    placeholder="דוא״ל"
-                                    required
-                            />
-                        </div>
-                    </div>
                     <div class="rectangle-3"></div>
                 </form>
             </div>
@@ -573,8 +566,7 @@ src="https://www.facebook.com/tr?id=1054981510824223&ev=PageView&noscript=1"
                     <p class="pricing-subtitle">בחרו את התוכנית שמתאימה לקליניקה שלכם</p>
                 </div>
                 <div class="pricing-cards">
-                    <div class="pricing-card pricing-card--featured">
-                        <div class="pricing-tag">מתחילים ✨</div>
+                    <div class="pricing-card">
                         <h3 class="pricing-plan-name">בסיסי</h3>
                         <div class="pricing-price-wrap">
                             <div class="pricing-price-row">
@@ -593,10 +585,29 @@ src="https://www.facebook.com/tr?id=1054981510824223&ev=PageView&noscript=1"
                             <li>דשבורד ניהול מטופלים</li>
                             <li>תמיכה בעברית</li>
                         </ul>
+                        <a href="#contact" class="pricing-btn pricing-btn--outline">לבדיקת התאמה</a>
+                    </div>
+                    <div class="pricing-card pricing-card--featured">
+                        <div class="pricing-tag">הכי פופולרי ✨</div>
+                        <h3 class="pricing-plan-name">סטנדרט</h3>
+                        <div class="pricing-price-wrap">
+                            <div class="pricing-price-row">
+                                <span class="pricing-currency">₪</span>
+                                <span class="pricing-amount">149</span>
+                                <span class="pricing-period">לחודש</span>
+                            </div>
+                            <span class="pricing-vat">+ מע״מ</span>
+                        </div>
+                        <p class="pricing-limit">עד 100 פגישות בחודש</p>
+                        <ul class="pricing-features-list">
+                            <li>כל מה שבחבילה הבסיסית</li>
+                            <li>מתאים לקליניקה בצמיחה</li>
+                            <li>ליווי אישי בהטמעה</li>
+                            <li>תמיכה בעברית</li>
+                        </ul>
                         <a href="#contact" class="pricing-btn pricing-btn--filled">לבדיקת התאמה</a>
                     </div>
                     <div class="pricing-card">
-                        <div class="pricing-tag">הכי פופולרי ✨</div>
                         <h3 class="pricing-plan-name">מתקדם</h3>
                         <div class="pricing-price-wrap">
                             <div class="pricing-price-row">
@@ -614,20 +625,6 @@ src="https://www.facebook.com/tr?id=1054981510824223&ev=PageView&noscript=1"
                             <li>שירות מותאם לצרכים שלכם</li>
                         </ul>
                         <a href="#contact" class="pricing-btn pricing-btn--outline">לבדיקת התאמה</a>
-                    </div>
-                    <div class="pricing-card">
-                        <h3 class="pricing-plan-name">קליניקה גדולה</h3>
-                        <div class="pricing-price-wrap">
-                            <span class="pricing-amount pricing-amount--custom">הצעת מחיר אישית</span>
-                        </div>
-                        <p class="pricing-limit">מעל 200 פגישות בחודש</p>
-                        <ul class="pricing-features-list">
-                            <li>כל מה שבתוכנית מתקדם</li>
-                            <li>מחיר מותאם לנפח הפעילות</li>
-                            <li>ליווי אישי בהטמעה</li>
-                            <li>שירות מותאם לצרכים שלכם</li>
-                        </ul>
-                        <a href="#contact" class="pricing-btn pricing-btn--outline">דברו איתנו</a>
                     </div>
                 </div>
             </div>
@@ -755,10 +752,17 @@ src="https://www.facebook.com/tr?id=1054981510824223&ev=PageView&noscript=1"
                 <div style="background:#efefef;border-radius:12px;padding:8px 12px;text-align:center;">
                     <p style="font-family:'Rubik',Helvetica;font-size:13px;font-weight:400;color:#696971;margin:0;direction:rtl;">מוצפן ומאובטח · אקו-סיסטם שלם לקליניקה · הכל בפיקוח והנהגה שלכם</p>
                 </div>
-                <div class="div" style="margin-top:16px;">
-                    <a href="#contact" class="buttons" aria-label="לבדיקת התאמה"><span
-                            class="title-2">לבדיקת התאמה</span></a>
-                </div>
+                <form action="https://api.web3forms.com/submit" method="POST" style="margin-top:16px;width:100%;">
+                    <input type="hidden" name="access_key" value="a7ad0565-dc76-455c-84a5-2ab398c0cc5f">
+                    <input type="hidden" name="subject" value="פנייה חדשה מ-Hero מובייל (אתר JAMPA)">
+                    <input type="hidden" name="botcheck" value="">
+                    <div style="display:flex;flex-direction:column;gap:10px;direction:rtl;">
+                        <input type="text" name="name" placeholder="שם מלא" required aria-label="שם מלא" style="width:100%;height:52px;border:1.5px solid #d7d9f5;border-radius:12px;padding:0 16px;font-family:'Rubik',Helvetica;font-size:16px;direction:rtl;outline:none;background:#fff;box-sizing:border-box;"/>
+                        <input type="tel" name="phone" placeholder="טלפון" required aria-label="טלפון" style="width:100%;height:52px;border:1.5px solid #d7d9f5;border-radius:12px;padding:0 16px;font-family:'Rubik',Helvetica;font-size:16px;direction:rtl;outline:none;background:#fff;box-sizing:border-box;"/>
+                        <button type="submit" style="width:100%;height:54px;background:#7557E3;color:#fff;border:none;border-radius:12px;font-family:'Rubik',Helvetica;font-size:17px;font-weight:600;cursor:pointer;">לבדיקת התאמה</button>
+                    </div>
+                    <p style="font-family:'Rubik',Helvetica;font-size:13px;color:#8888aa;margin:10px 0 0 0;direction:rtl;text-align:center;">נחזור אליכם עוד היום · ללא התחייבות</p>
+                </form>
             </div>
             <div class="vector-wrapper" aria-hidden="true"><img class="vector" src="https://jampa-landing.web.app/img/vector-1-1.svg" alt=""/></div>
             <div class="img-wrapper" aria-hidden="true"><img class="img" src="https://jampa-landing.web.app/img/vector-1-2.svg" alt=""/></div>
@@ -1222,20 +1226,6 @@ src="https://www.facebook.com/tr?id=1054981510824223&ev=PageView&noscript=1"
                         />
                     </div>
                 </div>
-                <div class="text-field">
-                    <label for="email-mobile" class="text">דוא״ל</label>
-                    <div class="frame-30">
-                        <input
-                                type="email"
-                                id="email-mobile"
-                                name="email"
-                                class="title-22"
-                                placeholder="דוא״ל"
-                                required
-                                aria-required="true"
-                        />
-                    </div>
-                </div>
                 <button type="submit" class="buttons"><span class="title-23">דברו איתי</span></button>
             </form>
             <div class="frame-31" aria-hidden="true">
@@ -1301,8 +1291,7 @@ src="https://www.facebook.com/tr?id=1054981510824223&ev=PageView&noscript=1"
                     <p class="pricing-subtitle">בחרו את התוכנית שמתאימה לקליניקה שלכם</p>
                 </div>
                 <div class="pricing-cards pricing-cards--mobile">
-                    <div class="pricing-card pricing-card--featured">
-                        <div class="pricing-tag">מתחילים ✨</div>
+                    <div class="pricing-card">
                         <h3 class="pricing-plan-name">בסיסי</h3>
                         <div class="pricing-price-wrap">
                             <div class="pricing-price-row">
@@ -1321,10 +1310,29 @@ src="https://www.facebook.com/tr?id=1054981510824223&ev=PageView&noscript=1"
                             <li>דשבורד ניהול מטופלים</li>
                             <li>תמיכה בעברית</li>
                         </ul>
+                        <a href="#contact" class="pricing-btn pricing-btn--outline">לבדיקת התאמה</a>
+                    </div>
+                    <div class="pricing-card pricing-card--featured">
+                        <div class="pricing-tag">הכי פופולרי ✨</div>
+                        <h3 class="pricing-plan-name">סטנדרט</h3>
+                        <div class="pricing-price-wrap">
+                            <div class="pricing-price-row">
+                                <span class="pricing-currency">₪</span>
+                                <span class="pricing-amount">149</span>
+                                <span class="pricing-period">לחודש</span>
+                            </div>
+                            <span class="pricing-vat">+ מע״מ</span>
+                        </div>
+                        <p class="pricing-limit">עד 100 פגישות בחודש</p>
+                        <ul class="pricing-features-list">
+                            <li>כל מה שבחבילה הבסיסית</li>
+                            <li>מתאים לקליניקה בצמיחה</li>
+                            <li>ליווי אישי בהטמעה</li>
+                            <li>תמיכה בעברית</li>
+                        </ul>
                         <a href="#contact" class="pricing-btn pricing-btn--filled">לבדיקת התאמה</a>
                     </div>
                     <div class="pricing-card">
-                        <div class="pricing-tag">הכי פופולרי ✨</div>
                         <h3 class="pricing-plan-name">מתקדם</h3>
                         <div class="pricing-price-wrap">
                             <div class="pricing-price-row">
@@ -1342,20 +1350,6 @@ src="https://www.facebook.com/tr?id=1054981510824223&ev=PageView&noscript=1"
                             <li>שירות מותאם לצרכים שלכם</li>
                         </ul>
                         <a href="#contact" class="pricing-btn pricing-btn--outline">לבדיקת התאמה</a>
-                    </div>
-                    <div class="pricing-card">
-                        <h3 class="pricing-plan-name">קליניקה גדולה</h3>
-                        <div class="pricing-price-wrap">
-                            <span class="pricing-amount pricing-amount--custom">הצעת מחיר אישית</span>
-                        </div>
-                        <p class="pricing-limit">מעל 200 פגישות בחודש</p>
-                        <ul class="pricing-features-list">
-                            <li>כל מה שבתוכנית מתקדם</li>
-                            <li>מחיר מותאם לנפח הפעילות</li>
-                            <li>ליווי אישי בהטמעה</li>
-                            <li>שירות מותאם לצרכים שלכם</li>
-                        </ul>
-                        <a href="#contact" class="pricing-btn pricing-btn--outline">דברו איתנו</a>
                     </div>
                 </div>
             </div>
@@ -1790,5 +1784,16 @@ src="https://www.facebook.com/tr?id=1054981510824223&ev=PageView&noscript=1"
 
 </script>
 
+<!-- WhatsApp floating button -->
+<a href="https://wa.me/972552864359?text=%D7%94%D7%99%D7%99!%20%D7%90%D7%A9%D7%9E%D7%97%20%D7%9C%D7%A4%D7%A8%D7%98%D7%99%D7%9D%20%D7%A0%D7%95%D7%A1%D7%A4%D7%99%D7%9D%20%D7%A2%D7%9C%20JAMPA" target="_blank" rel="noopener noreferrer" class="wa-float" aria-label="דברו עם הנציג הדיגיטלי בוואטסאפ">
+    <svg viewBox="0 0 24 24" fill="#fff" width="28" height="28" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51l-.57-.01c-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.872.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.29.173-1.414-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.002-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 0 0-3.48-8.413Z"/></svg>
+    <span class="wa-float__label">דברו עם הנציג הדיגיטלי</span>
+</a>
+<style>
+.wa-float{position:fixed;bottom:22px;left:22px;z-index:99999;display:flex;align-items:center;gap:10px;background:#25D366;color:#fff;text-decoration:none;padding:13px 20px;border-radius:50px;box-shadow:0 6px 22px rgba(37,211,102,.45);font-family:'Rubik',Helvetica,sans-serif;font-size:15px;font-weight:600;direction:rtl;transition:transform .2s,box-shadow .2s;}
+.wa-float:hover{transform:translateY(-2px);box-shadow:0 10px 28px rgba(37,211,102,.55);}
+.wa-float svg{flex-shrink:0;}
+@media(max-width:600px){.wa-float{padding:14px;bottom:16px;left:16px;}.wa-float__label{display:none;}}
+</style>
 </body>
 </html>
